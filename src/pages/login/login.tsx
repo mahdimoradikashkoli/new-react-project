@@ -14,6 +14,7 @@ const Login = () => {
   const { showPasswordImg } = useContext(store);
 
   const [searchParams] = useSearchParams();
+  // const name=searchParams.get("name")
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,7 +37,7 @@ const Login = () => {
       const res = await instanse.post("/auth/login", Data);
       jscookie.set("token", res.data.token);
       toast.success("welcome")
-      navigate("/")
+      navigate(`/?name=${searchParams.get("name")}`,)
     } catch (error) {
       toast.error("somtin is wrong");
     }

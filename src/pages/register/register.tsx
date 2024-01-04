@@ -30,9 +30,8 @@ const Register: React.FC = () => {
   } = useForm({
     resolver: yupResolver(registerformschema),
   });
-
-  
-  const navigate = useNavigate();
+ const navigate=useNavigate()
+ 
 
   const handleRegisterForm = handleSubmit(async (Data) => {
 
