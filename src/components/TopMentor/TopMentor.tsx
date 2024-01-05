@@ -1,8 +1,8 @@
 import {TopMentorType} from "./type"
-export const TopMentor:React.FC<TopMentorType>=({image,name})=>{
+export const TopMentor:React.FC<TopMentorType>=({image,name,key})=>{
     return (
-        <div className="flex flex-col items-center flex-shrink-0">
-          <img className="w-20 h-20 rounded-full" src={image} alt="image" />
+        <div key={key} className="flex flex-col items-center flex-shrink-0">
+          <img className="w-20 h-20 rounded-full object-cover" src={image} alt="image" />
           <p className="">{name}</p>
         </div>
     )

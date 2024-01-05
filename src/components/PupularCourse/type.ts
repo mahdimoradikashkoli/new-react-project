@@ -1,7 +1,9 @@
 export type PupularCourseType={
     image:string,
     description:string,
-    student:string,
+    teacher:string,
     price:string,
-    suggestion:string
+    suggestion:string,
+    teacherImg:string,
+    key:string
 }

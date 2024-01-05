@@ -12,9 +12,8 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const { showPasswordImg } = useContext(store);
-
-  const [searchParams] = useSearchParams();
-  // const name=searchParams.get("name")
+const [searchParams]=useSearchParams()
+localStorage.setItem("userName",JSON.stringify(searchParams.get("name")))
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,7 +36,7 @@ const Login = () => {
       const res = await instanse.post("/auth/login", Data);
       jscookie.set("token", res.data.token);
       toast.success("welcome")
-      navigate(`/?name=${searchParams.get("name")}`,)
+      navigate(`/`)
     } catch (error) {
       toast.error("somtin is wrong");
     }
