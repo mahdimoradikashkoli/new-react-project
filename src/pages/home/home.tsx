@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Categories,
   NavbarForSubject,
@@ -6,27 +6,46 @@ import {
   TopMentor,
 } from "../../components";
 import { instanse } from "../../App";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type categorietype2 = {
   img: string;
   categorieName: string;
   _id: string;
 };
+type mentortyp = {
+  topMentorImage: string;
+  topMentorName: string;
+  _id: string;
+};
+
+interface PupularCourseType {
+  _id: string;
+  courseImageAddress: string;
+  corseSubject: string;
+  mentorImageAddress: string;
+  mentorName: string;
+  courseprice: string;
+}
 const HomePage: React.FC = () => {
-  const [searchParams]=useSearchParams()
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popularCourses, setPopularCourses] = useState([]);
   const [topMentors, setTopMentors] = useState([]);
   const navigate = useNavigate();
 
-  console.log(categories);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const categorieRes = await instanse.get("/get/categorie");
         setCategories(categorieRes.data.msg);
+
+        const pupularcourse = await instanse.get("/get/pupuparcourse");
+        setPopularCourses(pupularcourse.data.msg);
+
+        const topMentor = await instanse.get("/get/topmentor");
+        setTopMentors(topMentor.data.msg);
+        console.log(topMentor.data.msg);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -40,12 +59,14 @@ const HomePage: React.FC = () => {
   }, [loading, categories]);
 
   const firstNineObjects = categories.slice(0, 9);
-
+  const userName = JSON.parse(localStorage.getItem("userName")!);
+  const firstThirdPupularCourse = popularCourses.slice(0, 3);
+  const firstSeventhTopMentor = topMentors.slice(0, 7);
   return (
     <>
       <div>
         <div className="bg-blue-600 w-full h-52 rounded-bl-2xl rounded-br-3xl relative p-3">
-          <h1 className="text-3xl font-bold relative top-6 ">hi,{searchParams.get("name")}</h1>
+          <h1 className="text-3xl font-bold relative top-6 ">hi,{userName}</h1>
           <p className="text-base relative top-7 ">Let's start learning!</p>
           <img
             className="bg-white rounded-full w-10 h-10 absolute right-3 top-12"
@@ -71,7 +92,7 @@ const HomePage: React.FC = () => {
             subjectName: "Categories",
             suggestion: "See all",
             handleOnclick: () => {
-              navigate("/allcategorie");
+              navigate("/layoutseeall/allcategorie");
             },
           })}
 
@@ -88,71 +109,41 @@ const HomePage: React.FC = () => {
             subjectName: "Pupular Course",
             suggestion: "See all",
             handleOnclick: () => {
-              // navigate()
+              navigate("/layoutseeall/allpupularcourse")
             },
           })}
 
           <div className="flex mt-5 overflow-x-auto gap-5">
-            {PupularCourse({
-              image: "/imagehome/learning.png",
-              description: "Design Thinking Fandamental",
-              student: "Mehdi Mordi",
-              price: "$180.00",
-              suggestion: "Best seller",
-            })}
-            {PupularCourse({
-              image: "/imagehome/learning.png",
-              description: "Design Thinking Fandamental",
-              student: "Mehdi Mordi",
-              price: "$180.00",
-              suggestion: "Best seller",
-            })}
-            {PupularCourse({
-              image: "/imagehome/learning.png",
-              description: "Design Thinking Fandamental",
-              student: "Mehdi Mordi",
-              price: "$180.00",
-              suggestion: "Best seller",
-            })}
-            {PupularCourse({
-              image: "/imagehome/learning.png",
-              description: "Design Thinking Fandamental",
-              student: "Mehdi Mordi",
-              price: "$180.00",
-              suggestion: "Best seller",
-            })}
+            {firstThirdPupularCourse?.length > 0 &&
+              firstThirdPupularCourse.map((course: PupularCourseType) => {
+                return PupularCourse({
+                  key: course._id,
+                  image: `http://localhost:4003${course.courseImageAddress}`,
+                  description: course.corseSubject,
+                  teacherImg: `http://localhost:4003${course.mentorImageAddress}`,
+                  teacher: course.mentorName,
+                  price: course.courseprice,
+                  suggestion: "see all",
+                });
+              })}
           </div>
           {NavbarForSubject({
             subjectName: "Top Mentor",
             suggestion: "See all",
-            handleOnclick: () => {},
+            handleOnclick: () => {
+              navigate("/layoutseeall/alltopmentor")
+            },
           })}
 
           <div className="flex overflow-x-auto gap-8 mt-5">
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
-            {TopMentor({
-              image: "/imagehome/girl.png",
-              name: "Bessi K.",
-            })}
+            {firstSeventhTopMentor?.length > 0 &&
+              firstSeventhTopMentor.map((mentor: mentortyp) => {
+                return TopMentor({
+                  image: `http://localhost:4003${mentor.topMentorImage}`,
+                  name: mentor.topMentorName,
+                  key: mentor._id,
+                });
+              })}
           </div>
 
           {NavbarForSubject({
