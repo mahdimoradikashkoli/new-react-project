@@ -4,7 +4,7 @@ const Layout = () => {
   return (
     <div>
       <Outlet />
-      <div className="fixed bottom-0 w-full bg-white h-20 rounded-t-lg flex items-center px-3 justify-around">
+      <div className="fixed bottom-0 w-full bg-white h-20 rounded-t-lg flex items-center px-3 justify-around z-30">
         <img className="w-12 h-12" src="/footerimg/home.png" alt="Home" />
         <img className="w-12 h-12" src="/footerimg/course.png" alt="course" />
         <img className="w-12 h-10" src="/footerimg/bookmark1.png" alt="bookmark" />

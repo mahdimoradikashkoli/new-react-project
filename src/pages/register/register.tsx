@@ -8,7 +8,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import {instanse} from "../../App"
+import {instance} from "../../App"
 import {registerFormType} from "./type"
 
 
@@ -42,11 +42,11 @@ const Register: React.FC = () => {
       return alert("Please select the tick I agree with the terms");
 
     try{
-      const resGet = await instanse.get("/auth/register");
+      const resGet = await instance.get("/auth/register");
     if (resGet.data.msg.find((user:registerFormType) => user.email === Data.email))
       return alert("user already exist");
 
-    await instanse.post("/auth/register", Data);
+    await instance.post("/auth/register", Data);
     toast.success("register is successfylly");
     navigate(
       `/auth/login?name=${Data.name}&email=${Data.email}&password=${Data.password}`,

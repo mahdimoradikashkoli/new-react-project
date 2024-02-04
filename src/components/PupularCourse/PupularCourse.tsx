@@ -1,3 +1,4 @@
+
 import { PupularCourseType } from "./type";
 export const PupularCourse: React.FC<PupularCourseType> = ({
   image,
@@ -5,11 +6,14 @@ export const PupularCourse: React.FC<PupularCourseType> = ({
   teacher,
   teacherImg,
   price,
-  suggestion,
   key,
+  suggestion,
+  onClick
 }) => {
+
   return (
     <div key={key} className="flex flex-col relative flex-shrink-0 gap-3">
+
       <div className="flex items-center z-10 absolute top-3 left-2 bg-slate-500 w-18 h-10 p-0.5 gap-1 rounded-md">
         <button className="flex">
           <img className="w-6 h-6" src="/imagehome/star-kh.png" alt="star" />
@@ -23,7 +27,7 @@ export const PupularCourse: React.FC<PupularCourseType> = ({
           alt="bookmark"
         />
       </div>
-      <img className="rounded-lg relative  h-48 object-cover" src={image} alt="course png" />
+      <img onClick={onClick} className="rounded-lg relative  h-48 object-cover" src={image} alt="course png" />
       <p className="text-lg font-medium">{description}</p>
       <div className="flex items-center gap-1">
         <img

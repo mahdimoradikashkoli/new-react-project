@@ -6,14 +6,14 @@ import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { instanse } from "../../App";
-import jscookie from "js-cookie";
+import {instance} from "../../App"
+import cookies from "js-cookie";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { showPasswordImg } = useContext(store);
-const [searchParams]=useSearchParams()
-localStorage.setItem("userName",JSON.stringify(searchParams.get("name")))
+  const [searchParams] = useSearchParams();
+  localStorage.setItem("userName", JSON.stringify(searchParams.get("name")));
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,10 +33,10 @@ localStorage.setItem("userName",JSON.stringify(searchParams.get("name")))
 
   const handleLoginForm = handleSubmit(async (Data) => {
     try {
-      const res = await instanse.post("/auth/login", Data);
-      jscookie.set("token", res.data.token);
-      toast.success("welcome")
-      navigate(`/`)
+      const res = await instance.post("/auth/login", Data);
+      cookies.set("token", res.data.token);
+      toast.success("welcome");
+      window.location.assign(`/`);
     } catch (error) {
       toast.error("somtin is wrong");
     }

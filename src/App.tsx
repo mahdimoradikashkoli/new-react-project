@@ -1,14 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Suspense } from "react";
 import { storeProvider as StoreProvider } from "./contexts";
-import axios from "axios";
-import jscookie from "js-cookie";
-export const instanse = axios.create({
+import cookies from "js-cookie"
+import axios from "axios"
+export const instance = axios.create({
   baseURL: "http://localhost:4003",
   headers: {
-    authorization: jscookie.get("token"),
+    authorization: cookies.get("token"),
   },
-});
+})
+instance.interceptors.response.use((config) => {
+  /** In dev, intercepts request and logs it into console for dev */
+  return config;
+},(error) => {
+  if(error.response.status === 401){
+    window.location.assign("/auth/login")
+  }
+  return Promise.reject(error);
+})
 
 import {
   Navigate,
@@ -45,7 +54,7 @@ const router = createBrowserRouter([
     path: "/auth",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        {jscookie.get("token") ? <Navigate to="/" /> : <AuthLayout />}
+        {cookies.get("token") ? <Navigate to="/" /> : <AuthLayout />}
       </Suspense>
     ),
     children: [
@@ -60,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "/auth/welcome1",
         element: (
-          <Suspense fallback={<h1>Loading</h1>}>
+          <Suspense fallback={<h1>Loading...</h1>}>
             <WelcomePage1 />
           </Suspense>
         ),
@@ -68,7 +77,7 @@ const router = createBrowserRouter([
       {
         path: "/auth/login",
         element: (
-          <Suspense fallback={<h1>Loading</h1>}>
+          <Suspense fallback={<h1>Loading...</h1>}>
             <Login />
           </Suspense>
         ),
@@ -78,7 +87,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<h1>Loading</h1>}>
+      <Suspense fallback={<h1>Loading...</h1>}>
         <Layout />
       </Suspense>
     ),
@@ -103,15 +112,21 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/layoutseeall/allcategorie",
-        element: <AllCategorie />,
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+          <AllCategorie />
+        </Suspense>,
       },
       {
         path: "/layoutseeall/allpupularcourse",
-        element: <AllPupularCourse />,
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+          <AllPupularCourse />
+        </Suspense>,
       },
       {
         path: "/layoutseeall/alltopmentor",
-        element: <AllTopMentor/>,
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+          <AllTopMentor/>
+        </Suspense>,
       },
     ],
   },
@@ -122,7 +137,9 @@ const router = createBrowserRouter([
     </Suspense>,
     children:[{
       path:"/pagelayout/coursedetailes",
-      element:<CourseDetailes/>
+      element:<Suspense fallback={<h1>Loading...</h1>}>
+        <CourseDetailes/>
+      </Suspense>
     }]
   }
 ]);
@@ -132,6 +149,7 @@ const App = () => {
     <StoreProvider>
       <Toaster />
       <RouterProvider router={router} />
+     
     </StoreProvider>
   );
 };

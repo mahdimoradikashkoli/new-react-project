@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import { Categories, Navigation } from "../../components";
-import { instanse } from "../../App";
+import {instance} from "../../App"
+import {categorieType} from "./type"
 
-interface categorieType {
-  img: string;
-  categorieName: string;
-  _id: string;
-}
 const AllCategorie = () => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const getCategories = await instanse.get("/get/categorie");
+        const getCategories = await instance.get("/get/categorie");
         setCategories(getCategories.data.msg);
       } catch (error) {
         console.error("Error fetching Data", error);

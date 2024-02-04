@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { instanse } from "../../App";
+import {instance} from "../../App"
 import { Navigation, TopMentor } from "../../components";
 
 type mentortyp = {
@@ -11,7 +11,7 @@ const AllTopMentor = () => {
   const [AlltopMentors, setAllTopMentors] = useState([]);
   useEffect(() => {
     const getAllTopMentor = async () => {
-      const topMentor = await instanse.get("/get/topmentor");
+      const topMentor = await instance.get("/get/topmentor");
       setAllTopMentors(topMentor.data.msg);
     };
     getAllTopMentor();
