@@ -6,6 +6,5 @@ export type PupularCourseType = {
   price: string;
   suggestion: string;
   teacherImg: string;
-  key:string
   onClick?:any
 };

@@ -117,7 +117,7 @@ const Register: React.FC = () => {
           />
         </form>
         {createCenteredText("or sign up whit", 40)}
-        <div className="flex mt-10 gap-4">
+        <div className="flex mt-10 gap-4 w-full md:justify-evenly">
           <button>
             <img
               className="bg-white w-20 h-220 rounded-full"

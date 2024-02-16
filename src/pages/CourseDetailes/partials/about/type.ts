@@ -8,5 +8,5 @@ export type courseDetailesType = {
     mentorName: string;
     numberOfStudent: string | number;
     subtitle: string;
-    key:string
+    customKey:string
   };

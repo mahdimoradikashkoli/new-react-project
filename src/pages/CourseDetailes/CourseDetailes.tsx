@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { LessonsInformation, Navigation } from "../../components";
 import { About, CourseLessons, Reviews } from "./partials";
-import { useSearchParams } from "react-router-dom";
-import {instance} from "../../App"
+import { useNavigate } from "react-router-dom";
+import { instance } from "../../App";
 import { Lessons } from "./../../components/Lessons/Lessons";
 import { store } from "../../contexts";
-import {courseInfoType} from "./type"
+import { courseInfoType } from "./type";
 
 const BackGroundDivImage = styled.div`
   background-size: contain;
@@ -18,21 +18,24 @@ const BackGroundDivImage = styled.div`
 const CourseDetailes: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("about");
   const [courseInfo, setCoursInfo] = useState<courseInfoType>({});
-  const [searchParams]= useSearchParams();
-  const {stopSong,curentSong}=useContext(store)
 
-  const handleStopSong=()=>{
-    stopSong(curentSong)
-  }
+  const { stopSong, curentSong } = useContext(store);
+  const navigate = useNavigate();
 
-  const handleTabChange=(tabName:string)=>{
-    setSelectedTab(tabName)
-  }
+  const handleStopSong = () => {
+    if (curentSong) {
+      stopSong(curentSong);
+    }
+  };
+
+  const handleTabChange = (tabName: string) => {
+    setSelectedTab(tabName);
+  };
+
+  const courseId=JSON.parse(localStorage.getItem("courseId")!)
   useEffect(() => {
     const fetchData = async () => {
-      const data = await instance.get(
-        `/coursedetailes/${searchParams.get("courseid")}`
-      );
+      const data = await instance.get(`/coursedetailes/${courseId}`);
       setCoursInfo(data.data.courseDetailes);
     };
     fetchData();
@@ -46,7 +49,7 @@ const CourseDetailes: React.FC = () => {
         }}
       >
         <Navigation
-        onClick={()=>handleStopSong()}
+          onClick={() => handleStopSong()}
           className="justify-between"
           backAddress="/"
           shareImage="/icons/sharepng.png"
@@ -84,13 +87,17 @@ const CourseDetailes: React.FC = () => {
           </div>
           <div className="flex justify-evenly mt-4">
             <button
-              onClick={()=>{handleTabChange("about"),handleStopSong()}}
-              className={`text-lg font-medium ${selectedTab === "about" ? "text-blue-500" : ""}`}
+              onClick={() => {
+                handleTabChange("about"), handleStopSong();
+              }}
+              className={`text-lg font-medium ${
+                selectedTab === "about" ? "text-blue-500" : ""
+              }`}
             >
               About
             </button>
             <button
-              onClick={()=>handleTabChange("lesson")}
+              onClick={() => handleTabChange("lesson")}
               className={`text-lg font-medium ${
                 selectedTab === "lesson" ? "text-blue-500" : ""
               }`}
@@ -98,7 +105,9 @@ const CourseDetailes: React.FC = () => {
               Lessons
             </button>
             <button
-              onClick={()=>{handleTabChange("reviews"),handleStopSong()}}
+              onClick={() => {
+                handleTabChange("reviews"), handleStopSong();
+              }}
               className={`text-lg font-medium ${
                 selectedTab === "reviews" ? "text-blue-500" : ""
               }`}
@@ -111,11 +120,13 @@ const CourseDetailes: React.FC = () => {
             <About
               aboutCourse={courseInfo!.aboutCourse}
               access={courseInfo!.access}
-              key={courseInfo!._id}
+              customKey={courseInfo!._id}
               language={courseInfo!.language}
               lastUpdate={courseInfo!.lastUpdate}
               level={courseInfo!.level}
-              mentorImageAddress={`http://localhost:4003/${courseInfo!.mentorImageAddress}`}
+              mentorImageAddress={`http://localhost:4003/${
+                courseInfo!.mentorImageAddress
+              }`}
               mentorName={courseInfo!.mentorName}
               numberOfStudent={courseInfo!.numberOfStudent}
               subtitle={courseInfo!.subtitle}
@@ -123,7 +134,7 @@ const CourseDetailes: React.FC = () => {
           )}
           {selectedTab === "lesson" && (
             <CourseLessons
-            numberOfLessom={courseInfo!.numberOfLessons}
+              numberOfLessom={courseInfo!.numberOfLessons}
               componentLesson={
                 <>
                   <LessonsInformation
@@ -133,12 +144,16 @@ const CourseDetailes: React.FC = () => {
                   />
                   <Lessons
                     LessonNumber="01"
-                    src={`http://localhost:4003/${courseInfo!.lessonOneAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonOneAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectOne}
                   />
                   <Lessons
                     LessonNumber="02"
-                    src={`http://localhost:4003/${courseInfo!.lessonToweAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonToweAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectTowe}
                   />
                   <LessonsInformation
@@ -148,22 +163,30 @@ const CourseDetailes: React.FC = () => {
                   />
                   <Lessons
                     LessonNumber="03"
-                    src={`http://localhost:4003/${courseInfo!.lessonThreeAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonThreeAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectThree}
                   />
                   <Lessons
                     LessonNumber="04"
-                    src={`http://localhost:4003/${courseInfo!.lessonForAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonForAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectFor}
                   />
                   <Lessons
                     LessonNumber="05"
-                    src={`http://localhost:4003/${courseInfo!.lessonFiveAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonFiveAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectFive}
                   />
                   <Lessons
                     LessonNumber="06"
-                    src={`http://localhost:4003/${courseInfo!.lessonSixAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonSixAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectSix}
                   />
                   <LessonsInformation
@@ -173,17 +196,23 @@ const CourseDetailes: React.FC = () => {
                   />
                   <Lessons
                     LessonNumber="07"
-                    src={`http://localhost:4003/${courseInfo!.lessonSevenAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonSevenAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectSeven}
                   />
                   <Lessons
                     LessonNumber="08"
-                    src={`http://localhost:4003/${courseInfo!.lessonEightAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonEightAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectEight}
                   />
                   <Lessons
                     LessonNumber="09"
-                    src={`http://localhost:4003/${courseInfo!.lessonNineAddress}`}
+                    src={`http://localhost:4003/${
+                      courseInfo!.lessonNineAddress
+                    }`}
                     subjectLesson={courseInfo!.subjectNine}
                   />
                 </>
@@ -201,7 +230,13 @@ const CourseDetailes: React.FC = () => {
               {courseInfo!.courseprice}
             </p>
           </div>
-          <button onClick={()=>{handleStopSong()}} className="px-8 py-2 font-medium text-white bg-blue-700 text-lg rounded-3xl">
+          <button
+            onClick={() => {
+              handleStopSong(),
+                navigate("/pagelayout/peymentmethods")
+            }}
+            className="px-8 py-2 font-medium text-white bg-blue-700 text-lg rounded-3xl"
+          >
             Enroll Now
           </button>
         </div>

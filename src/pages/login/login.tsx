@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext } from "react";
 import { Button, Textfield, createCenteredText } from "../../components";
 import emailpng from "/icons/email.png";
@@ -30,15 +31,14 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(loginFormSchema),
   });
-
   const handleLoginForm = handleSubmit(async (Data) => {
     try {
       const res = await instance.post("/auth/login", Data);
       cookies.set("token", res.data.token);
       toast.success("welcome");
       window.location.assign(`/`);
-    } catch (error) {
-      toast.error("somtin is wrong");
+    } catch (error:any) {
+      toast.error(`${error.response.data.msg}`);
     }
   });
 

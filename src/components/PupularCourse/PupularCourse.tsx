@@ -6,13 +6,12 @@ export const PupularCourse: React.FC<PupularCourseType> = ({
   teacher,
   teacherImg,
   price,
-  key,
   suggestion,
   onClick
 }) => {
 
   return (
-    <div key={key} className="flex flex-col relative flex-shrink-0 gap-3">
+    <div className="flex flex-col relative flex-shrink-0 gap-3">
 
       <div className="flex items-center z-10 absolute top-3 left-2 bg-slate-500 w-18 h-10 p-0.5 gap-1 rounded-md">
         <button className="flex">
