@@ -1,23 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Suspense } from "react";
 import { storeProvider as StoreProvider } from "./contexts";
-import cookies from "js-cookie"
-import axios from "axios"
+import cookies from "js-cookie";
+import axios from "axios";
 export const instance = axios.create({
   baseURL: "http://localhost:4003",
   headers: {
     authorization: cookies.get("token"),
   },
-})
-instance.interceptors.response.use((config) => {
-  /** In dev, intercepts request and logs it into console for dev */
-  return config;
-},(error) => {
-  if(error.response.status === 401){
-    window.location.assign("/auth/login")
+});
+instance.interceptors.response.use(
+  (config) => {
+    /** In dev, intercepts request and logs it into console for dev */
+    return config;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      window.location.assign("/auth/login");
+    }
+    return Promise.reject(error);
   }
-  return Promise.reject(error);
-})
+);
 
 import {
   Navigate,
@@ -27,9 +30,20 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import AllTopMentor from "./pages/allTopMentor/allTopMentor";
-const CourseDetailes=React.lazy(()=> import("./pages/CourseDetailes/CourseDetailes"))
-const LayoutSeeAll=React.lazy(()=> import("./components/LayoutSeeAll/LayoutSeeAll"))
-const AllPupularCourse=React.lazy(()=> import("./pages/allPupularCourse/allPupularCourse"))
+const PaymentResult=React.lazy(()=> import("./pages/peymentMethods/paymentResult/paymentResult"))
+const ElectronicReceipt=React.lazy(()=> import("./pages/peymentMethods/electronicReceipt/electronicReceipt"))
+const ReviewSummery=React.lazy(()=> import("./pages/peymentMethods/reviewSummery/reviewSummery"))
+const AddCard=React.lazy(()=> import("./pages/peymentMethods/addCard/addcard"))
+const PeymentMethods=React.lazy(()=> import("./pages/peymentMethods/paymentMethod/peymentMethods"))
+const CourseDetailes = React.lazy(
+  () => import("./pages/CourseDetailes/CourseDetailes")
+);
+const LayoutSeeAll = React.lazy(
+  () => import("./components/LayoutSeeAll/LayoutSeeAll")
+);
+const AllPupularCourse = React.lazy(
+  () => import("./pages/allPupularCourse/allPupularCourse")
+);
 const AllCategorie = React.lazy(
   () => import("./pages/allCategorie/allCategorie")
 );
@@ -49,7 +63,7 @@ const Home = React.lazy(
     }>
 );
 
-const router = createBrowserRouter([
+const route=createBrowserRouter([
   {
     path: "/auth",
     element: (
@@ -112,44 +126,96 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/layoutseeall/allcategorie",
-        element: <Suspense fallback={<h1>Loading...</h1>}>
-          <AllCategorie />
-        </Suspense>,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AllCategorie />
+          </Suspense>
+        ),
       },
       {
         path: "/layoutseeall/allpupularcourse",
-        element: <Suspense fallback={<h1>Loading...</h1>}>
-          <AllPupularCourse />
-        </Suspense>,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AllPupularCourse />
+          </Suspense>
+        ),
       },
       {
         path: "/layoutseeall/alltopmentor",
-        element: <Suspense fallback={<h1>Loading...</h1>}>
-          <AllTopMentor/>
-        </Suspense>,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AllTopMentor />
+          </Suspense>
+        ),
       },
     ],
   },
   {
-    path:"/pagelayout",
-    element:<Suspense fallback={<h1>Loading...</h1>}>
-      <Outlet/>
-    </Suspense>,
-    children:[{
-      path:"/pagelayout/coursedetailes",
-      element:<Suspense fallback={<h1>Loading...</h1>}>
-        <CourseDetailes/>
+    path: "/pagelayout",
+    element: (
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Outlet />
       </Suspense>
-    }]
-  }
-]);
+    ),
+    children: [
+      {
+        path: `/pagelayout/coursedetailes/`,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <CourseDetailes />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/peymentmethods",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <PeymentMethods />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/addcard",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AddCard />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/reviewsummery/:payment",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ReviewSummery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/paymentresult",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <PaymentResult />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/electronicreceipt",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ElectronicReceipt />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+])
 
 const App = () => {
+  
   return (
     <StoreProvider>
       <Toaster />
-      <RouterProvider router={router} />
-     
+      <RouterProvider router={route} />
     </StoreProvider>
   );
 };

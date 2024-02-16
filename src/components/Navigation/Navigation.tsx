@@ -12,7 +12,6 @@ export const Navigation: React.FC<navigationType> = ({
   const navigate = useNavigate();
   return (
     <div className="flex flex-col   items-center">
-      {/* <div className={`flex fixed top-3 left-3 right-3  z-10 w-full `}> */}
       <div
         className={` flex  items-center  fixed px-3 pt-3  z-20 w-full   ${className}`}
       >
@@ -34,23 +33,23 @@ export const Navigation: React.FC<navigationType> = ({
             {subjectName}
           </h2>
         )}
-        {bookMarkImage && shareImage && (
+        {(bookMarkImage || shareImage) && (
           <div className="flex items-center gap-1">
-            <button >
+           {bookMarkImage && <button >
               <img
                 className="rounded-full w-10 h-10 bg-slate-400"
                 src={bookMarkImage}
                 alt="share"
               />
-            </button>
+            </button>}
 
-            <button onClick={onClick}>
+            {shareImage && <button onClick={onClick}>
               <img
                 className="rounded-full w-10 h-10"
                 src={shareImage}
                 alt="book mark"
               />
-            </button>
+            </button>}
           </div>
         )}
       </div>

@@ -11,14 +11,14 @@ export const About: React.FC<courseDetailesType> = ({
   mentorName,
   numberOfStudent,
   subtitle,
-  key,
+  customKey,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   const textAboutCourse: string = aboutCourse;
 
   return (
-    <div key={key}>
+    <div key={customKey}>
       <div className="mt-3">
         <div>
           <h2 className="text-black font-medium text-lg">About Course</h2>

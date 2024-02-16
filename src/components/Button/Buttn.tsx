@@ -1,6 +1,6 @@
 interface buttonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
     variant?:"contained" | "text" | "outline",
-    children:string
+    children:string,
 }
 
 export const Button:React.FC<buttonProps> = ({variant,children,...restprops}) => {
@@ -12,7 +12,7 @@ export const Button:React.FC<buttonProps> = ({variant,children,...restprops}) =>
     }
 
   return (
-    <button className={`${buttonStyle[variant ?? "text" ]} ${restprops.className} w-full rounded-2xl text-lg px-5 py-3`}>
+    <button {...restprops} className={`${buttonStyle[variant ?? "text" ]} ${restprops.className} w-full rounded-2xl text-lg px-5 py-3`}>
       {children}
     </button>
   );

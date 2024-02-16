@@ -7,12 +7,10 @@ import {
   TopMentor,
 } from "../../components";
 import { useNavigate } from "react-router-dom";
-import {categorietype2} from "./type"
-import {mentortyp} from "./type"
-import {PupularCourseType} from "./type"
-import {instance} from "../../App"
-
-
+import { categorietype2 } from "./type";
+import { mentortyp } from "./type";
+import { PupularCourseType } from "./type";
+import { instance } from "../../App";
 
 const HomePage: React.FC = () => {
   const [categories, setCategories] = useState([]);
@@ -29,7 +27,6 @@ const HomePage: React.FC = () => {
 
         const pupularcourse = await instance.get("/get/pupuparcourse");
         setPopularCourses(pupularcourse.data.msg);
-        
 
         const topMentor = await instance.get("/get/topmentor");
         setTopMentors(topMentor.data.msg);
@@ -45,7 +42,7 @@ const HomePage: React.FC = () => {
     }
   }, [loading, categories]);
 
-const userName=JSON.parse(localStorage.getItem("userName")!)
+  const userName = JSON.parse(localStorage.getItem("userName")!);
   return (
     <>
       <div>
@@ -57,7 +54,10 @@ const userName=JSON.parse(localStorage.getItem("userName")!)
             src="/icons/bell.png"
             alt="bell image"
           />
-          <Search className="flex items-center bg-white rounded-lg relative top-16 border-2 border-transparent focus-within:border-slate-700" searchtitle="search"/>
+          <Search
+            className="flex items-center bg-white rounded-lg relative top-16 border-2 border-transparent focus-within:border-slate-700"
+            searchtitle="search"
+          />
         </div>
 
         <div className="p-3 mt-1">
@@ -82,32 +82,37 @@ const userName=JSON.parse(localStorage.getItem("userName")!)
             subjectName: "Pupular Course",
             suggestion: "See all",
             handleOnclick: () => {
-              navigate(`/layoutseeall/allpupularcourse`)
+              navigate(`/layoutseeall/allpupularcourse`);
             },
           })}
 
           <div className="flex mt-5 overflow-x-auto gap-5">
             {popularCourses?.length > 0 &&
               popularCourses.map((course: PupularCourseType) => {
-                return <PupularCourse
-                  key= {course._id}
-                  image= {`http://localhost:4003${course.courseImageAddress}`}
-                  description= {course.corseSubject}
-                  teacherImg= {`http://localhost:4003${course.mentorImageAddress}`}
-                  teacher= {course.mentorName}
-                  price= {course.courseprice}
-                  suggestion= "see all"
-                  onClick={()=>[
-                    navigate(`/pagelayout/coursedetailes/?courseid=${course._id}`)
-                  ]}
-                />;
+                return (
+                  <PupularCourse
+                    key={course._id}
+                    image={`http://localhost:4003${course.courseImageAddress}`}
+                    description={course.corseSubject}
+                    teacherImg={`http://localhost:4003${course.mentorImageAddress}`}
+                    teacher={course.mentorName}
+                    price={course.courseprice}
+                    suggestion="see all"
+                    onClick={() => [
+                      navigate(
+                        `/pagelayout/coursedetailes/`,
+                      ),
+                      localStorage.setItem("courseId",JSON.stringify(course._id))
+                    ]}
+                  />
+                );
               })}
           </div>
           {NavbarForSubject({
             subjectName: "Top Mentor",
             suggestion: "See all",
             handleOnclick: () => {
-              navigate("/layoutseeall/alltopmentor")
+              navigate("/layoutseeall/alltopmentor");
             },
           })}
 
