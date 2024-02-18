@@ -29,12 +29,24 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import AllTopMentor from "./pages/allTopMentor/allTopMentor";
-const PaymentResult=React.lazy(()=> import("./pages/peymentMethods/paymentResult/paymentResult"))
-const ElectronicReceipt=React.lazy(()=> import("./pages/peymentMethods/electronicReceipt/electronicReceipt"))
-const ReviewSummery=React.lazy(()=> import("./pages/peymentMethods/reviewSummery/reviewSummery"))
-const AddCard=React.lazy(()=> import("./pages/peymentMethods/addCard/addcard"))
-const PeymentMethods=React.lazy(()=> import("./pages/peymentMethods/paymentMethod/peymentMethods"))
+const AllTopMentor=React.lazy(()=>import("./pages/allTopMentor/allTopMentor"))
+const ReviewMentor =React.lazy(()=>import("./pages/review/reviewMentor/reviewMentor"))
+const ReviewCourse = React.lazy(() => import("./pages/review/reviewCourse/reviewCourse"));
+const PaymentResult = React.lazy(
+  () => import("./pages/peymentMethods/paymentResult/paymentResult")
+);
+const ElectronicReceipt = React.lazy(
+  () => import("./pages/peymentMethods/electronicReceipt/electronicReceipt")
+);
+const ReviewSummery = React.lazy(
+  () => import("./pages/peymentMethods/reviewSummery/reviewSummery")
+);
+const AddCard = React.lazy(
+  () => import("./pages/peymentMethods/addCard/addcard")
+);
+const PeymentMethods = React.lazy(
+  () => import("./pages/peymentMethods/paymentMethod/peymentMethods")
+);
 const CourseDetailes = React.lazy(
   () => import("./pages/CourseDetailes/CourseDetailes")
 );
@@ -63,7 +75,7 @@ const Home = React.lazy(
     }>
 );
 
-const route=createBrowserRouter([
+const route = createBrowserRouter([
   {
     path: "/auth",
     element: (
@@ -206,12 +218,27 @@ const route=createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/pagelayout/reviewcourse",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ReviewCourse/>
+          </Suspense>
+        ),
+      },
+      {
+        path: "/pagelayout/reviewmentor",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ReviewMentor/>
+          </Suspense>
+        ),
+      },
     ],
   },
-])
-
+]);
+ReviewMentor
 const App = () => {
-  
   return (
     <StoreProvider>
       <Toaster />

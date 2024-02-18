@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { LessonsInformation, Navigation } from "../../components";
 import { About, CourseLessons, Reviews } from "./partials";
 import { useNavigate } from "react-router-dom";
@@ -7,17 +6,12 @@ import { instance } from "../../App";
 import { Lessons } from "./../../components/Lessons/Lessons";
 import { store } from "../../contexts";
 import { courseInfoType } from "./type";
+import {BackGroundDivImage} from "./style"
 
-const BackGroundDivImage = styled.div`
-  background-size: contain;
-  width: 100%;
-  height: 200px;
-  background-repeat: no-repeat;
-`;
 
 const CourseDetailes: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState("about");
-  const [courseInfo, setCoursInfo] = useState<courseInfoType>({});
+  const [courseInfo, setCoursInfo] = useState<courseInfoType>({} as courseInfoType);
 
   const { stopSong, curentSong } = useContext(store);
   const navigate = useNavigate();
@@ -77,13 +71,34 @@ const CourseDetailes: React.FC = () => {
               </div>
             </div>
           </div>
-          <h1 className="font-medium text-2xl mt-4">{}</h1>
+          <h1 className="font-medium text-2xl mt-4">{courseInfo?.corseSubject}</h1>
           <div className="flex justify-between mt-4">
-            <p className="text-slate-600 font-medium">
-              {courseInfo?.mentorName}
-            </p>
-            <p className="text-slate-600 font-medium">{`${courseInfo?.numberOfLessons} Lessons`}</p>
-            <p className="text-slate-600 font-medium">cerificate</p>
+            <div className="flex items-center gap-0.5">
+              <img
+                className="w-5 h-5 rounded-full"
+                src="/icons/iconprofile.png"
+                alt="icon profile"
+              />
+              <p className="text-slate-600 font-medium">
+                {courseInfo?.mentorName}
+              </p>
+            </div>
+            <div className="flex items-center gap-0.5">
+              <img
+                className="w-5 h-5 rounded-full"
+                src="/icons/iconplay.png"
+                alt="icon play"
+              />
+              <p className="text-slate-600 font-medium">{`${courseInfo?.numberOfLessons} Lessons`}</p>
+            </div>
+            <div className="flex items-center gap-0.5">
+              <img
+                className="w-5 h-5 rounded-full"
+                src="/icons/iconcertificate.png"
+                alt="icon certificate"
+              />
+              <p className="text-slate-600 font-medium">cerificate</p>
+            </div>
           </div>
           <div className="flex justify-evenly mt-4">
             <button
@@ -130,6 +145,7 @@ const CourseDetailes: React.FC = () => {
               mentorName={courseInfo!.mentorName}
               numberOfStudent={courseInfo!.numberOfStudent}
               subtitle={courseInfo!.subtitle}
+              subjectCourse={courseInfo?.corseSubject}
             />
           )}
           {selectedTab === "lesson" && (

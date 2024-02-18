@@ -12,6 +12,7 @@ export const About: React.FC<courseDetailesType> = ({
   numberOfStudent,
   subtitle,
   customKey,
+  subjectCourse
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -48,7 +49,7 @@ export const About: React.FC<courseDetailesType> = ({
           />
           <div>
             <h3 className="font-medium text-md">{mentorName}</h3>
-            <h3 className="text-sm">Design Tutor</h3>
+            <h3 className="text-sm">{subjectCourse}</h3>
           </div>
         </div>
         <div className="flex gap-3">
