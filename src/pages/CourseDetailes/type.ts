@@ -5,7 +5,7 @@ export type courseInfoType={
     mentorName: string,
     courseprice: string,
     numberOfLessons: number,
-    aboutCourse:string
+    aboutCourse:string,
     language: string,
     numberOfStudent: number,
     lastUpdate: string,
@@ -30,5 +30,5 @@ export type courseInfoType={
     lessonSevenAddress: string,
     lessonEightAddress: string,
     lessonNineAddress: string,
-    _id:string
+    _id:string,
   }
