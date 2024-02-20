@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   Categories,
+  FooterNavigation,
   NavbarForSubject,
   PupularCourse,
   Search,
@@ -100,7 +101,7 @@ const HomePage: React.FC = () => {
                     suggestion="see all"
                     onClick={() => [
                       navigate(
-                        `/pagelayout/coursedetailes/`,
+                        `/coursedetailes`,
                       ),
                       localStorage.setItem("courseId",JSON.stringify(course._id))
                     ]}
@@ -156,6 +157,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+      <FooterNavigation  classNameHome="bg-blue-700"/>
     </>
   );
 };

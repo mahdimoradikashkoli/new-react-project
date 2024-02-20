@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 const Login = () => {
   const { showPasswordImg } = useContext(store);
   const [searchParams] = useSearchParams();
-  localStorage.setItem("userName", JSON.stringify(searchParams.get("name")));
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,6 +33,7 @@ const Login = () => {
   const handleLoginForm = handleSubmit(async (Data) => {
     try {
       const res = await instance.post("/auth/login", Data);
+      localStorage.setItem("userName",JSON.stringify(res.data.userInfo.name))
       cookies.set("token", res.data.token);
       toast.success("welcome");
       window.location.assign(`/`);
@@ -51,7 +51,7 @@ const Login = () => {
           Hi! Welcome back, you've been missed
         </p>
       </div>
-      <div className="flex flex-col items-center py-1 px-5 ">
+      <div className="flex flex-col items-center py-1 pb-10 px-5 ">
         <form
           onSubmit={handleLoginForm}
           className="w-full flex flex-col gap-3"

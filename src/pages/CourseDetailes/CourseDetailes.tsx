@@ -105,7 +105,7 @@ const CourseDetailes: React.FC = () => {
               onClick={() => {
                 handleTabChange("about"), handleStopSong();
               }}
-              className={`text-lg font-medium ${
+              className={`text-lg font-medium p-2 cursor-pointer ${
                 selectedTab === "about" ? "text-blue-500" : ""
               }`}
             >
@@ -113,7 +113,7 @@ const CourseDetailes: React.FC = () => {
             </button>
             <button
               onClick={() => handleTabChange("lesson")}
-              className={`text-lg font-medium ${
+              className={`text-lg font-medium p-2 cursor-pointer ${
                 selectedTab === "lesson" ? "text-blue-500" : ""
               }`}
             >
@@ -123,7 +123,7 @@ const CourseDetailes: React.FC = () => {
               onClick={() => {
                 handleTabChange("reviews"), handleStopSong();
               }}
-              className={`text-lg font-medium ${
+              className={`text-lg font-medium p-2 cursor-pointer ${
                 selectedTab === "reviews" ? "text-blue-500" : ""
               }`}
             >
@@ -249,7 +249,7 @@ const CourseDetailes: React.FC = () => {
           <button
             onClick={() => {
               handleStopSong(),
-                navigate("/pagelayout/peymentmethods")
+                navigate("/payment/peymentmethods")
             }}
             className="px-8 py-2 font-medium text-white bg-blue-700 text-lg rounded-3xl"
           >
