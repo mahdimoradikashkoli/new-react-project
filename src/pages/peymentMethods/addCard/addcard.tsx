@@ -7,7 +7,7 @@ const navigate=useNavigate()
   return (
     <>
       <Navigation
-        backAddress="/pagelayout/peymentmethods"
+        backAddress="/payment/peymentmethods"
         subjectName="Add Card"
       />
       <form
@@ -25,7 +25,7 @@ const navigate=useNavigate()
             <Button
               children="Add Card"
               variant="contained"
-              onClick={()=>navigate("/pagelayout/reviewsummery/Peypal")}
+              onClick={()=>navigate("/payment/reviewsummery/Peypal")}
             />
           </div>
         </div>

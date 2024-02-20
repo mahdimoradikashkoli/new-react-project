@@ -18,7 +18,7 @@ const ReviewSummery = () => {
   return (
     <>
       <Navigation
-        backAddress="/pagelayout/peymentmethods"
+        backAddress="/payment/peymentmethods"
         subjectName="Review Summery"
       />
       <div className="px-3 pt-16 pb-20 ">
@@ -104,7 +104,7 @@ const ReviewSummery = () => {
               )}
               <p className="text-slate-500 text-base">{payment}</p>
             </div>
-            <button onClick={()=>navigate("/pagelayout/peymentmethods")} className="text-blue-600 border-none outline-none">
+            <button onClick={()=>navigate("/payment/peymentmethods")} className="text-blue-600 border-none outline-none">
               Change
             </button>
           </div>
@@ -112,7 +112,7 @@ const ReviewSummery = () => {
       </div>
       <div className="flex flex-col items-center">
         <div className="border-t-2 fixed bottom-0 w-full flex bg-white rounded-t-2xl py-2 px-3  items-center justify-between">
-          <Button onClick={()=>navigate("/pagelayout/paymentresult")} children="Continue" variant="contained" />
+          <Button onClick={()=>navigate("/payment/paymentresult")} children="Continue" variant="contained" />
         </div>
       </div>
     </>

@@ -16,7 +16,7 @@ const ElectronicReceipt = () => {
   return (
     <>
       <Navigation
-        backAddress="/pagelayout/paymentresult"
+        backAddress="/payment/paymentresult"
         subjectName="E-Receipt"
         className="justify-between"
         shareImage="/icons/sharepng.png"

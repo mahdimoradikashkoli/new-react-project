@@ -58,9 +58,9 @@ export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectL
     onClick: (e: React.MouseEvent) => void;
   }) => {
     return (
-      <div className={`w-44 h-1 rounded-3xl bg-slate-500 `} onClick={onClick}>
+      <div className={`w-44 h-1  cursor-pointer rounded-3xl bg-slate-500 `} onClick={onClick}>
         <div
-          className="h-1 bg-blue-700 rounded-3xl"
+          className="h-1 bg-blue-700  rounded-3xl"
           style={{ width: `${progress}%` }}
         ></div>
       </div>

@@ -29,9 +29,21 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-const AllTopMentor=React.lazy(()=>import("./pages/allTopMentor/allTopMentor"))
-const ReviewMentor =React.lazy(()=>import("./pages/review/reviewMentor/reviewMentor"))
-const ReviewCourse = React.lazy(() => import("./pages/review/reviewCourse/reviewCourse"));
+const MyCourse=React.lazy(()=>import("./pages/myCourse/myCourse"))
+const BookMark=React.lazy(()=>import("./pages/bookmark/bookMark"))
+const PaymentLayout = React.lazy(
+  () => import("./components/PaymentLayout/PaymentLayout")
+);
+const Review = React.lazy(() => import("./components/Review/Review"));
+const AllTopMentor = React.lazy(
+  () => import("./pages/allTopMentor/allTopMentor")
+);
+const ReviewMentor = React.lazy(
+  () => import("./pages/review/reviewMentor/reviewMentor")
+);
+const ReviewCourse = React.lazy(
+  () => import("./pages/review/reviewCourse/reviewCourse")
+);
 const PaymentResult = React.lazy(
   () => import("./pages/peymentMethods/paymentResult/paymentResult")
 );
@@ -121,8 +133,24 @@ const route = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<h1>Loadin</h1>}>
+          <Suspense fallback={<h1>Loading...</h1>}>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/bookmarks",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <BookMark />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/mycourse",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <MyCourse />
           </Suspense>
         ),
       },
@@ -163,7 +191,7 @@ const route = createBrowserRouter([
     ],
   },
   {
-    path: "/pagelayout",
+    path: "/coursedetailes",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
         <Outlet />
@@ -171,15 +199,51 @@ const route = createBrowserRouter([
     ),
     children: [
       {
-        path: `/pagelayout/coursedetailes/`,
+        path: `/coursedetailes`,
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <CourseDetailes />
           </Suspense>
         ),
       },
+    ],
+  },
+  {
+    path: "/review",
+    element: (
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Review />
+      </Suspense>
+    ),
+    children: [
       {
-        path: "/pagelayout/peymentmethods",
+        path: "/review/reviewcourse",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ReviewCourse />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/review/reviewmentor",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <ReviewMentor />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/payment",
+    element: (
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <PaymentLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/payment/peymentmethods",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <PeymentMethods />
@@ -187,7 +251,7 @@ const route = createBrowserRouter([
         ),
       },
       {
-        path: "/pagelayout/addcard",
+        path: "/payment/addcard",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <AddCard />
@@ -195,7 +259,7 @@ const route = createBrowserRouter([
         ),
       },
       {
-        path: "/pagelayout/reviewsummery/:payment",
+        path: "/payment/reviewsummery/:payment",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <ReviewSummery />
@@ -203,7 +267,7 @@ const route = createBrowserRouter([
         ),
       },
       {
-        path: "/pagelayout/paymentresult",
+        path: "/payment/paymentresult",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <PaymentResult />
@@ -211,33 +275,16 @@ const route = createBrowserRouter([
         ),
       },
       {
-        path: "/pagelayout/electronicreceipt",
+        path: "/payment/electronicreceipt",
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <ElectronicReceipt />
           </Suspense>
         ),
       },
-      {
-        path: "/pagelayout/reviewcourse",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <ReviewCourse/>
-          </Suspense>
-        ),
-      },
-      {
-        path: "/pagelayout/reviewmentor",
-        element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
-            <ReviewMentor/>
-          </Suspense>
-        ),
-      },
     ],
   },
 ]);
-ReviewMentor
 const App = () => {
   return (
     <StoreProvider>

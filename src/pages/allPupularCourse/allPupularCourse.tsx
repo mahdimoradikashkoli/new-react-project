@@ -45,7 +45,7 @@ const AllPupularCourse: React.FC = () => {
                 suggestion="Sea all"
                 teacherImg={`http://localhost:4003${course.mentorImageAddress}`}
                 onClick={()=>{
-                  navigate(`/pagelayout/coursedetailes/?courseid=${course._id}`)
+                  navigate(`/coursedetailes/?courseid=${course._id}`)
                 }}
               />
             );

@@ -73,7 +73,7 @@ const Register: React.FC = () => {
           Fill your informatino below or register with your socail account
         </p>
       </div>
-      <div className="flex flex-col items-center py-1 px-5 ">
+      <div className="flex flex-col items-center py-1 pb-10 px-5 ">
         <form
           onSubmit={handleRegisterForm}
           className="w-full flex flex-col gap-3"
@@ -117,7 +117,7 @@ const Register: React.FC = () => {
           />
         </form>
         {createCenteredText("or sign up whit", 40)}
-        <div className="flex mt-10 gap-4 w-full md:justify-evenly">
+        <div className="flex mt-10 gap-4 ">
           <button>
             <img
               className="bg-white w-20 h-220 rounded-full"
@@ -140,7 +140,7 @@ const Register: React.FC = () => {
             />
           </button>
         </div>
-        <p className=" text-lg flex gap-0.5 mt-8">
+        <p className=" text-lg flex gap-0.5 mt-8 ">
           Already have an account?
           <button onClick={()=>{navigate("/auth/login")}} className="text-blue-600 underline">Sign in</button>
         </p>
