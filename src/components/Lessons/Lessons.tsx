@@ -5,32 +5,41 @@ import { store } from "../../contexts";
 type LessonsType = {
   src: string;
   LessonNumber: string;
-  key?:string,
-  subjectLesson:string
+  key?: string;
+  subjectLesson: string;
 };
 
-export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectLesson}) => {
-  const {stopSong,playSong}=useContext(store)
+export const Lessons: React.FC<LessonsType> = ({
+  src,
+  LessonNumber,
+  key,
+  subjectLesson,
+}) => {
+  const { stopSong, playSong } = useContext(store);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [seek, setSeek] = useState(0);
   const [duration, setDuration] = useState(0);
   const intervalId = useRef<number | null>(null);
+  const musicRef = useRef<Howl | null>(null);
 
-  const musicRef = useRef<Howl | null>(
-    new Howl({
-      src: [`${src}`],
+  useEffect(() => {
+    if (musicRef.current) {
+      musicRef.current.unload();
+      musicRef.current = null;
+    }
+
+    musicRef.current = new Howl({
+      src: [src],
       html5: true,
       format: ["mp3"],
       loop: false,
-    })
-  );
+    });
 
-  useEffect(() => {
-    musicRef.current!.on("load", () => {
+    musicRef.current.on("load", () => {
       setDuration(Math.floor(musicRef.current!.duration()));
     });
 
-    musicRef.current!.on("end", () => {
+    musicRef.current.on("end", () => {
       setSeek(0);
       setIsPlaying(false);
     });
@@ -42,7 +51,7 @@ export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectL
     return () => {
       clearInterval(intervalId.current!);
     };
-  }, []);
+  }, [src]);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -58,9 +67,12 @@ export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectL
     onClick: (e: React.MouseEvent) => void;
   }) => {
     return (
-      <div className={`w-44 h-1  cursor-pointer rounded-3xl bg-slate-500 `} onClick={onClick}>
+      <div
+        className={`w-44 h-1 cursor-pointer rounded-3xl bg-slate-500 `}
+        onClick={onClick}
+      >
         <div
-          className="h-1 bg-blue-700  rounded-3xl"
+          className="h-1 bg-blue-700 rounded-3xl"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
@@ -76,14 +88,14 @@ export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectL
 
   const playButton = () => {
     if (!isPlaying) {
-      playSong(musicRef.current)
+      playSong(musicRef.current);
       setIsPlaying(true);
     }
   };
 
   const stopButton = () => {
     if (isPlaying) {
-      stopSong(musicRef.current)
+      stopSong(musicRef.current);
       setIsPlaying(false);
     }
   };
@@ -118,7 +130,10 @@ export const Lessons: React.FC<LessonsType> = ({ src, LessonNumber ,key,subjectL
         <div className="flex justify-center mt-3">
           <div className="flex items-center gap-1">
             <span>{formatTime(Math.floor(seek))}</span>
-            <ProgressBar progress={(seek / duration) * 100} onClick={seekTo} />
+            <ProgressBar
+              progress={(seek / duration) * 100}
+              onClick={seekTo}
+            />
             <span>{formatTime(duration)}</span>
           </div>
         </div>

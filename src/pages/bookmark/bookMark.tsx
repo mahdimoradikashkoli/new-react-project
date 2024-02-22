@@ -25,7 +25,7 @@ const BookMark = () => {
           subjectName="Bookmark"
           searchIcon="/icons/search.png"
         />
-        <ul className="fixed left-0 right-0   p-2 top-20 z-10 flex items-center justify-between">
+        <ul className="fixed left-0 right-0   p-2 top-20 z-10 flex items-center gap-1 overflow-x-auto  justify-between">
           <li
             onClick={() => setFilter("All")}
             className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
@@ -57,6 +57,22 @@ const BookMark = () => {
             }`}
           >
             Marketing
+          </li>
+          <li
+            onClick={() => setFilter("accounting")}
+            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+              filter === "accounting" && "!bg-blue-700"
+            }`}
+          >
+            Accounting
+          </li>
+          <li
+            onClick={() => setFilter("science")}
+            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+              filter === "science" && "!bg-blue-700"
+            }`}
+          >
+            Science
           </li>
         </ul>
 
