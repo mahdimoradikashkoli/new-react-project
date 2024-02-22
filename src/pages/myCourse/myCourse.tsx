@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  ContinueLearning,
   FooterNavigation,
   Navigation,
 } from "../../components";
@@ -26,7 +25,7 @@ const MyCourse = () => {
             {
               <hr
                 className={`border-t-4 rounded-t-3xl w-40 ${
-                  showTitle === "ongoing" ? "border-blue-700" : "bg-inherit"
+                  showTitle === "ongoing" ? "border-blue-700" : "border-transparent"
                 }`}
               />
             }
@@ -43,7 +42,7 @@ const MyCourse = () => {
             {
               <hr
                 className={`border-t-4 rounded-t-3xl w-40  ${
-                  showTitle === "completed" ? "border-blue-700" : "bg-inherit"
+                  showTitle === "completed" ? "border-blue-700" : "border-transparent"
                 }`}
               />
             }

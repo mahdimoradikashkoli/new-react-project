@@ -35,6 +35,15 @@ const CourseDetailes: React.FC = () => {
     fetchData();
   }, []);
 
+  const handleLessonsShow=()=>{
+    navigate("/course/lesson-certificate/lessons")
+    handleStopSong()
+  }
+  const handleCertificateShow=()=>{
+    navigate("/course/lesson-certificate/certificate")
+    handleStopSong()
+  }
+
   return (
     <>
       <BackGroundDivImage
@@ -43,7 +52,6 @@ const CourseDetailes: React.FC = () => {
         }}
       >
         <Navigation
-          onClick={() => handleStopSong()}
           className="justify-between"
           backAddress="/"
           shareImage="/icons/sharepng.png"
@@ -79,7 +87,7 @@ const CourseDetailes: React.FC = () => {
                 src="/icons/iconprofile.png"
                 alt="icon profile"
               />
-              <p className="text-slate-600 font-medium">
+              <p className="text-slate-600 font-medium p-1">
                 {courseInfo?.mentorName}
               </p>
             </div>
@@ -89,7 +97,7 @@ const CourseDetailes: React.FC = () => {
                 src="/icons/iconplay.png"
                 alt="icon play"
               />
-              <p className="text-slate-600 font-medium">{`${courseInfo?.numberOfLessons} Lessons`}</p>
+              <p onClick={handleLessonsShow} className="text-slate-600 font-medium cursor-pointer p-1">{`${courseInfo?.numberOfLessons} Lessons`}</p>
             </div>
             <div className="flex items-center gap-0.5">
               <img
@@ -97,7 +105,7 @@ const CourseDetailes: React.FC = () => {
                 src="/icons/iconcertificate.png"
                 alt="icon certificate"
               />
-              <p className="text-slate-600 font-medium">cerificate</p>
+              <p onClick={handleCertificateShow} className="text-slate-600 font-medium cursor-pointer p-1">cerificate</p>
             </div>
           </div>
           <div className="flex justify-evenly mt-4">

@@ -29,8 +29,12 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-const MyCourse=React.lazy(()=>import("./pages/myCourse/myCourse"))
-const BookMark=React.lazy(()=>import("./pages/bookmark/bookMark"))
+const CourseLayout = React.lazy(
+  () => import("./components/CourseLayout/CourseLayout")
+);
+const Course = React.lazy(() => import("./pages/course/course"));
+const MyCourse = React.lazy(() => import("./pages/myCourse/myCourse"));
+const BookMark = React.lazy(() => import("./pages/bookmark/bookMark"));
 const PaymentLayout = React.lazy(
   () => import("./components/PaymentLayout/PaymentLayout")
 );
@@ -126,7 +130,7 @@ const route = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        <Layout />
+       {cookies.get("token")? <Layout /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -279,6 +283,36 @@ const route = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <ElectronicReceipt />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/course",
+    element: (
+      <Suspense
+        fallback={
+          <div className="flex flex-col justify-center">
+            <h1>Loading...</h1>
+          </div>
+        }
+      >
+        <CourseLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/course/lesson-certificate/:params",
+        element: (
+          <Suspense
+            fallback={
+              <div className="flex flex-col justify-center">
+                <h1>Loading...</h1>
+              </div>
+            }
+          >
+            <Course />
           </Suspense>
         ),
       },
