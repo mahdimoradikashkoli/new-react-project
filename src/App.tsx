@@ -30,6 +30,8 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Filter from "./pages/search/filter/filter";
+const Notification=React.lazy(()=>import("./pages/notification/notification"))
+const AllContinueLearning=React.lazy(()=>import("./pages/allContinueLearning/allContinueLearning"))
 const SearchcourseAndMentor =React.lazy(()=>import("./pages/search/searchCourseAndMentor/searchCourseAndMentor"))
 const SearchLayout=React.lazy(()=>import("./components/SearchLayout/SearchLayout"))
 const SearchPage=React.lazy(()=>import("./pages/search/searchPage/searchPage"))
@@ -162,6 +164,14 @@ const route = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/notification",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Notification />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
@@ -193,6 +203,14 @@ const route = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading...</h1>}>
             <AllTopMentor />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/layoutseeall/allcontinuelearning",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <AllContinueLearning />
           </Suspense>
         ),
       },

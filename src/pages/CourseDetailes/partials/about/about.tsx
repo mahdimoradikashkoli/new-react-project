@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { courseDetailesType } from "./type";
+import { MentorInfo } from "../../../../components";
 
 export const About: React.FC<courseDetailesType> = ({
   aboutCourse,
@@ -40,31 +41,9 @@ export const About: React.FC<courseDetailesType> = ({
         </div>
       </div>
       <h1 className="text-xl text-black font-medium mt-3">Tutor</h1>
-      <div className="mt-2 flex justify-between items-center">
-        <div className="flex items-center  gap-2">
-          <img
-            className="rounded-full w-12 h-12"
-            src={mentorImageAddress}
-            alt="teacher"
-          />
-          <div>
-            <h3 className="font-medium text-md">{mentorName}</h3>
-            <h3 className="text-sm">{subjectCourse}</h3>
-          </div>
-        </div>
-        <div className="flex gap-3">
-          <img
-            className="rounded-full w-12 h-12"
-            src="/icons/call.png"
-            alt="call image"
-          />
-          <img
-            className="rounded-full w-12 h-12"
-            src="/icons/message.png"
-            alt="message image"
-          />
-        </div>
-      </div>
+      <MentorInfo className="mt-2" mentorImgAddress={mentorImageAddress}
+      mentorName={mentorName}
+      subjectCourse={subjectCourse}/>
       <h1 className="text-xl text-black font-medium mt-3">Info</h1>
       <div className="grid grid-cols-2 gap-y-2 mt-3">
         <div>

@@ -13,31 +13,31 @@ export const FooterNavigation: React.FC<footerNavigationType> = ({
     <div className="fixed bottom-0 w-full bg-white h-20 rounded-t-lg flex items-center px-3 justify-around z-30">
       <img
         onClick={()=>navigate("/")}
-        className={`w-12 h-12 cursor-pointer p-1 ${classNameHome}`}
+        className={`w-12 h-12 cursor-pointer border-2 border-transparent ${classNameHome}`}
         src="/footerimg/home.png"
         alt="Home"
       />
       <img
         onClick={() => navigate("/mycourse")}
-        className={`w-12 h-12 cursor-pointer p-1  ${classNameMycourse}`}
+        className={`w-12 h-12 cursor-pointer border-2 border-transparent  ${classNameMycourse}`}
         src="/footerimg/course.png"
         alt="course"
       />
       <img
         onClick={() => navigate("/bookmarks")}
-        className={`w-12 h-10 cursor-pointer p-1  ${classNameBookMark}`}
+        className={`w-12 h-10 cursor-pointer border-2 border-transparent  ${classNameBookMark}`}
         src="/footerimg/bookmark1.png"
         alt="bookmark"
       />
       <img
         onClick={() => navigate("")}
-        className={`w-12 h-12 cursor-pointer p-1  ${classNameCHat}`}
+        className={`w-12 h-12 cursor-pointer border-2 border-transparent  ${classNameCHat}`}
         src="/footerimg/chat1.png"
         alt="chat"
       />
       <img
         onClick={() => navigate("")}
-        className={`w-12 h-12 cursor-pointer p-1  ${classNameProfile}`}
+        className={`w-12 h-12 cursor-pointer border-2 border-transparent  ${classNameProfile}`}
         src="/footerimg/profile1.png"
         alt="profile"
       />

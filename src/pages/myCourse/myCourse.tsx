@@ -52,7 +52,7 @@ const MyCourse = () => {
         {(showTitle === "ongoing") && <OnGoing/>}
         {(showTitle === "completed") && <Completed/>}
       </div>
-      <FooterNavigation classNameMycourse="bg-blue-700" />
+      <FooterNavigation classNameMycourse="!border-blue-700" />
     </>
   );
 };

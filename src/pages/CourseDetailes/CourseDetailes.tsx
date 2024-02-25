@@ -62,7 +62,7 @@ const CourseDetailes: React.FC = () => {
         style={{ height: "824px" }}
         className="rounded-t-3xl bg-white relative -top-10 w-full "
       >
-        <div className="px-3 text-black">
+        <div className="px-3 text-black pb-24">
           <div className="flex items-center justify-between pt-5">
             <button className="py-1 px-2 rounded-md bg-orange-200 text-orange-500">
               Best Seller
