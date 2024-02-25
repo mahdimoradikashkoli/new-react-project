@@ -6,5 +6,6 @@ export type BookMarkComponentType={
     mentorImageAddress:string,
     mentorName:string,
     courseprice:string,
-    onClick?:MouseEventHandler<HTMLButtonElement>
+    onClick?:MouseEventHandler<HTMLButtonElement>,
+    bookMarkIcon?:string
 }

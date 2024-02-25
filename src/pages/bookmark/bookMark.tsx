@@ -25,56 +25,56 @@ const BookMark = () => {
           subjectName="Bookmark"
           searchIcon="/icons/search.png"
         />
-        <ul className="fixed left-0 right-0   p-2 top-20 z-10 flex items-center gap-1 overflow-x-auto  justify-between">
-          <li
-            onClick={() => setFilter("All")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "All" && "!bg-blue-700"
-            }`}
-          >
-            All
-          </li>
-          <li
-            onClick={() => setFilter("Design")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "Design" && "!bg-blue-700"
-            }`}
-          >
-            Design
-          </li>
-          <li
-            onClick={() => setFilter("Cooding")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "Cooding" && "!bg-blue-700"
-            }`}
-          >
-            Cooding
-          </li>
-          <li
-            onClick={() => setFilter("Marketing")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "Marketing" && "!bg-blue-700"
-            }`}
-          >
-            Marketing
-          </li>
-          <li
-            onClick={() => setFilter("accounting")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "accounting" && "!bg-blue-700"
-            }`}
-          >
-            Accounting
-          </li>
-          <li
-            onClick={() => setFilter("science")}
-            className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
-              filter === "science" && "!bg-blue-700"
-            }`}
-          >
-            Science
-          </li>
-        </ul>
+          <ul className="fixed left-0 right-0   p-2 top-20 z-10 flex items-center gap-1 overflow-x-auto  justify-between">
+            <li
+              onClick={() => setFilter("All")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "All" && "!bg-blue-700"
+              }`}
+            >
+              All
+            </li>
+            <li
+              onClick={() => setFilter("Design")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "Design" && "!bg-blue-700"
+              }`}
+            >
+              Design
+            </li>
+            <li
+              onClick={() => setFilter("Cooding")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "Cooding" && "!bg-blue-700"
+              }`}
+            >
+              Cooding
+            </li>
+            <li
+              onClick={() => setFilter("Marketing")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "Marketing" && "!bg-blue-700"
+              }`}
+            >
+              Marketing
+            </li>
+            <li
+              onClick={() => setFilter("accounting")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "accounting" && "!bg-blue-700"
+              }`}
+            >
+              Accounting
+            </li>
+            <li
+              onClick={() => setFilter("science")}
+              className={`px-3 py-1 bg-slate-200 text-black rounded-2xl cursor-pointer ${
+                filter === "science" && "!bg-blue-700"
+              }`}
+            >
+              Science
+            </li>
+          </ul>
 
         <div className="p-3 fixed top-28 left-0 pb-56 right-0 flex flex-col gap-2 sm:gap-4 h-screen overflow-y-auto w-full mt-4 sm:flex-row sm:!flex-wrap ">
           <BookMarkComponent

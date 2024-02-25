@@ -5,7 +5,8 @@ export const BookMarkComponent:React.FC<BookMarkComponentType>=({
     mentorImageAddress,
     mentorName,
     courseprice,
-    onClick
+    onClick,
+    bookMarkIcon
 })=>{
     
       
@@ -19,9 +20,9 @@ export const BookMarkComponent:React.FC<BookMarkComponentType>=({
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1 md:justify-between">
                 <h1 className="font-medium text-sm">{corseSubject}</h1>
-                <button className="bg-blue-700 text-sm text-white p-1 rounded-3xl" onClick={onClick}>
+                { onClick ? <button className="bg-blue-700 text-sm text-white p-1 rounded-3xl" onClick={onClick}>
                     Remove
-                </button>
+                </button>:bookMarkIcon && <img className="w-6 h-6" src={bookMarkIcon} alt="bookMark icon"/>}
               </div>
               <div className="flex items-center gap-3">
                 <img
