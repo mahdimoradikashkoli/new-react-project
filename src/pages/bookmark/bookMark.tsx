@@ -135,7 +135,7 @@ const BookMark = () => {
           />
         </div>
       </div>
-      <FooterNavigation  classNameBookMark="bg-blue-700"/>
+      <FooterNavigation  classNameBookMark="!border-blue-700"/>
       <div id="hiddenDiv" className="hidden p-2 pb-8 w-full bg-slate-300 h-fit text-black rounded-t-3xl absolute left-0 right-0 bottom-0 z-40">
         <p className="text-center font-medium text-lg mb-5">Remove from Favarite?</p>
         <BookMarkComponent

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import {instance} from "../../App"
-import { Navigation, TopMentor } from "../../components";
+import { instance } from "../../App";
+import { MentorInfo, Navigation } from "../../components";
 
 type mentortyp = {
   topMentorImage: string;
@@ -18,17 +18,20 @@ const AllTopMentor = () => {
   }, []);
   return (
     <>
-    <Navigation backAddress="/" subjectName="Top Mentors"/>
-    <div className="grid grid-cols-3 gap-2 px-3 py-20">
-      {AlltopMentors?.length > 0 &&
-        AlltopMentors.map((mentor: mentortyp) => {
-          return TopMentor({
-            image: `http://localhost:4003${mentor.topMentorImage}`,
-            name: mentor.topMentorName,
-            key: mentor._id,
-          });
-        })}
-    </div>
+      <Navigation backAddress="/" subjectName="Top Mentors" />
+      <div className="px-3  py-20">
+        <div className="flex flex-col gap-6 sm:flex-row sm:flex-wrap">
+          {AlltopMentors?.length > 0 &&
+            AlltopMentors.map((mentor: mentortyp) => {
+              return MentorInfo({
+                unikId:mentor?._id,
+                mentorImgAddress: `http://localhost:4003${mentor?.topMentorImage}`,
+                mentorName: mentor?.topMentorName,
+                subjectCourse: "Learning footbal",
+              });
+            })}
+        </div>
+      </div>
     </>
   );
 };

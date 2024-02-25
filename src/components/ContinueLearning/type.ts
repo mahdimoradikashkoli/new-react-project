@@ -6,4 +6,5 @@ export type ContinueLearningType = {
   progressBar: number;
   NumberOfLessonsRead: number;
   NumberOfLessons: number;
+  className?:string
 };

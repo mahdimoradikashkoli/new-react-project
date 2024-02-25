@@ -6,4 +6,6 @@ export type mentorInfoType={
     subjectCourse:string,
     onclickPhoneIcon?:MouseEventHandler<HTMLImageElement>
     onclickChatIcon?:MouseEventHandler<HTMLImageElement>
+    className?:string,
+    unikId?:string
 }

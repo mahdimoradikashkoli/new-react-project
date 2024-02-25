@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import {
   Categories,
+  ContinueLearning,
   FooterNavigation,
   NavbarForSubject,
   PupularCourse,
   Search,
-  TopMentor,
 } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { categorietype2 } from "./type";
@@ -51,6 +51,7 @@ const HomePage: React.FC = () => {
           <h1 className="text-3xl font-bold relative top-6 ">hi,{userName}</h1>
           <p className="text-base relative top-7 ">Let's start learning!</p>
           <img
+          onClick={()=>navigate("notification")}
             className="bg-white rounded-full w-10 h-10 absolute right-3 top-12"
             src="/icons/bell.png"
             alt="bell image"
@@ -62,7 +63,7 @@ const HomePage: React.FC = () => {
               searchtitle="search"
             />
             <img
-            onClick={()=>navigate("/search/filter")}
+              onClick={() => navigate("/search/filter")}
               className="w-11 h-11 rounded-lg"
               src="/icons/filter(1).png"
               alt="filter icon"
@@ -70,7 +71,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-3 mt-1">
+        <div className="p-3 mt-1 pb-24">
           {NavbarForSubject({
             subjectName: "Categories",
             suggestion: "See all",
@@ -79,7 +80,7 @@ const HomePage: React.FC = () => {
             },
           })}
 
-          <div className="flex  gap-5 mt-5 overflow-x-auto">
+          <div className="flex  gap-8 mt-5 overflow-x-auto">
             {categories.map((categorie: categorietype2) => {
               return Categories({
                 img: `http://localhost:4003${categorie.img}`,
@@ -130,44 +131,73 @@ const HomePage: React.FC = () => {
           <div className="flex overflow-x-auto gap-8 mt-5">
             {topMentors?.length > 0 &&
               topMentors.map((mentor: mentortyp) => {
-                return TopMentor({
-                  image: `http://localhost:4003${mentor.topMentorImage}`,
-                  name: mentor.topMentorName,
-                  key: mentor._id,
-                });
+                return (
+                  <div
+                    key={mentor._id}
+                    className="flex flex-col items-center flex-shrink-0"
+                  >
+                    <img
+                      className="w-16 h-16 object-cover rounded-full"
+                      src={`http://localhost:4003${mentor.topMentorImage}`}
+                      alt="mentor image"
+                    />
+                    <p className="text-base">{mentor.topMentorName}</p>
+                  </div>
+                );
               })}
           </div>
 
           {NavbarForSubject({
             subjectName: "Continue Learning",
             suggestion: "See all",
-            handleOnclick: () => {},
+            handleOnclick: () => {navigate("/layoutseeall/allcontinuelearning")},
           })}
 
-          <div className="flex border p-2 gap-2 border-slate-400 rounded-lg w-full h-40 mb-20">
-            <img
-              className="w-1/2 object-cover rounded-md"
-              src="/imagehome/teacher.png"
-              alt="image"
+          <div className="flex items-center gap-8 overflow-x-auto">
+            <ContinueLearning
+              courseImage="/imagehome/teacher.png"
+              className="mt-5 flex-shrink-0"
+              NumberOfLessons={25}
+              NumberOfLessonsRead={23}
+              courseTitle="introduction of figma"
+              mentorImage="/imagehome/girl.png"
+              mentorName="Roberto Grean"
+              progressBar={78}
             />
-            <div className="flex flex-col gap-1">
-              <button className="p-1 bg-orange-200 rounded-xl text-orange-400 w-fit">
-                Design
-              </button>
-              <h1 className="text-md font-medium">Introduction of Figma</h1>
-              <div className="flex items-center gap-3">
-                <img
-                  className="w-8 h-8 rounded-full"
-                  src="/imagehome/profile.png"
-                  alt="profilr png"
-                />
-                <p>Mehdi moradi</p>
-              </div>
-            </div>
+            <ContinueLearning
+              courseImage="/imagehome/teacher.png"
+              className="mt-5  flex-shrink-0"
+              NumberOfLessons={25}
+              NumberOfLessonsRead={23}
+              courseTitle="introduction of figma"
+              mentorImage="/imagehome/girl.png"
+              mentorName="Roberto Grean"
+              progressBar={78}
+            />
+            <ContinueLearning
+              courseImage="/imagehome/teacher.png"
+              className="mt-5 flex-shrink-0"
+              NumberOfLessons={25}
+              NumberOfLessonsRead={23}
+              courseTitle="introduction of figma"
+              mentorImage="/imagehome/girl.png"
+              mentorName="Roberto Grean"
+              progressBar={78}
+            />
+            <ContinueLearning
+              courseImage="/imagehome/teacher.png"
+              className="mt-5 flex-shrink-0"
+              NumberOfLessons={25}
+              NumberOfLessonsRead={23}
+              courseTitle="introduction of figma"
+              mentorImage="/imagehome/girl.png"
+              mentorName="Roberto Grean"
+              progressBar={78}
+            />
           </div>
         </div>
       </div>
-      <FooterNavigation classNameHome="bg-blue-700" />
+      <FooterNavigation classNameHome="!border-blue-700" />
     </>
   );
 };
