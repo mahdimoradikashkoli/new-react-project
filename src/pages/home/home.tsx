@@ -55,10 +55,19 @@ const HomePage: React.FC = () => {
             src="/icons/bell.png"
             alt="bell image"
           />
-          <Search
-            className="flex items-center bg-white rounded-lg relative top-16 border-2 border-transparent focus-within:border-slate-700"
-            searchtitle="search"
-          />
+          <div className="flex items-center gap-2 relative top-16 w-full">
+            <Search
+              onClickSearch={() => navigate("/search")}
+              className="flex items-center bg-white rounded-lg w-full border-2 border-transparent focus-within:border-slate-700"
+              searchtitle="search"
+            />
+            <img
+            onClick={()=>navigate("/search/filter")}
+              className="w-11 h-11 rounded-lg"
+              src="/icons/filter(1).png"
+              alt="filter icon"
+            />
+          </div>
         </div>
 
         <div className="p-3 mt-1">
@@ -100,10 +109,11 @@ const HomePage: React.FC = () => {
                     price={course.courseprice}
                     suggestion="see all"
                     onClick={() => [
-                      navigate(
-                        `/coursedetailes`,
+                      navigate(`/coursedetailes`),
+                      localStorage.setItem(
+                        "courseId",
+                        JSON.stringify(course._id)
                       ),
-                      localStorage.setItem("courseId",JSON.stringify(course._id))
                     ]}
                   />
                 );
@@ -157,7 +167,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-      <FooterNavigation  classNameHome="bg-blue-700"/>
+      <FooterNavigation classNameHome="bg-blue-700" />
     </>
   );
 };

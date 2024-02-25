@@ -29,6 +29,10 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import Filter from "./pages/search/filter/filter";
+const SearchcourseAndMentor =React.lazy(()=>import("./pages/search/searchCourseAndMentor/searchCourseAndMentor"))
+const SearchLayout=React.lazy(()=>import("./components/SearchLayout/SearchLayout"))
+const SearchPage=React.lazy(()=>import("./pages/search/searchPage/searchPage"))
 const CourseLayout = React.lazy(
   () => import("./components/CourseLayout/CourseLayout")
 );
@@ -293,7 +297,7 @@ const route = createBrowserRouter([
     element: (
       <Suspense
         fallback={
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center w-full">
             <h1>Loading...</h1>
           </div>
         }
@@ -318,6 +322,32 @@ const route = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"/search",
+    element:<Suspense fallback={<h1>Loading...</h1>}>
+      <SearchLayout/>
+    </Suspense>,
+    children:[
+      {
+        path:"/search",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <SearchPage/>
+        </Suspense>
+      },
+      {
+        path:"/search/mentor-and-course",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <SearchcourseAndMentor/>
+        </Suspense>
+      },
+      {
+        path:"/search/filter",
+        element:<Suspense fallback={<h1>Loadong...</h1>}>
+          <Filter/>
+        </Suspense>
+      }
+    ]
+  }
 ]);
 const App = () => {
   return (
