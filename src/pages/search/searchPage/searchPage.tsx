@@ -1,4 +1,4 @@
-import { BookMarkComponent, SearchNavbar } from "../../../components";
+import { CourseComponent, SearchNavbar } from "../../../components";
 
 const SearchPage = () => {
   return (
@@ -34,35 +34,35 @@ const SearchPage = () => {
         </div>
         <h1 className="font-medium text-lg">Recent View</h1>
         <div className="flex flex-col gap-2 sm:flex-row mt-1 sm:flex-wrap">
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Introduction of figma"
             courseImageAddress="/imagehome/teacher.png"
             courseprice="$2000.00"
             mentorImageAddress="/imagehome/girl.png"
             mentorName="Ali Baghery"
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Introduction of figma"
             courseImageAddress="/imagehome/teacher.png"
             courseprice="$2000.00"
             mentorImageAddress="/imagehome/girl.png"
             mentorName="Ali Baghery"
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Introduction of figma"
             courseImageAddress="/imagehome/teacher.png"
             courseprice="$2000.00"
             mentorImageAddress="/imagehome/girl.png"
             mentorName="Ali Baghery"
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Introduction of figma"
             courseImageAddress="/imagehome/teacher.png"
             courseprice="$2000.00"
             mentorImageAddress="/imagehome/girl.png"
             mentorName="Ali Baghery"
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Introduction of figma"
             courseImageAddress="/imagehome/teacher.png"
             courseprice="$2000.00"

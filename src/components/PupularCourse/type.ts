@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { MouseEventHandler } from "react";
 export type PupularCourseType = {
   image: string;
   description?: string;
@@ -6,5 +6,5 @@ export type PupularCourseType = {
   price: string;
   suggestion: string;
   teacherImg: string;
-  onClick?:any
+  onClick?:MouseEventHandler<HTMLImageElement>
 };

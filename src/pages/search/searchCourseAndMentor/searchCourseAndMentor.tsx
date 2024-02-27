@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookMarkComponent, MentorInfo, SearchNavbar } from "../../../components";
+import { CourseComponent, MentorInfo, SearchNavbar } from "../../../components";
 
 const SearchcourseAndMentor = () => {
   const [showTitle, setShowTitle] = useState("courses");
@@ -54,7 +54,7 @@ const SearchcourseAndMentor = () => {
         </div>
         {showTitle === "courses" && (
           <div className="flex mt-4 flex-col gap-2 pb-20 sm:flex-row sm:flex-wrap overflow-y-auto ">
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -62,7 +62,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -70,7 +70,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -78,7 +78,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -86,7 +86,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -94,7 +94,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -102,7 +102,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -110,7 +110,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -118,7 +118,7 @@ const SearchcourseAndMentor = () => {
               mentorName="karim parsa"
               bookMarkIcon="/icons/bookmark.png"
             />
-            <BookMarkComponent
+            <CourseComponent
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"

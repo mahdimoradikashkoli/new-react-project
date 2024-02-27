@@ -6,15 +6,17 @@ export const MentorInfo: React.FC<mentorInfoType> = ({
   onclickPhoneIcon,
   subjectCourse,
   className,
-  unikId
+  unikId,
+  onClick
 }) => {
   return (
     <div
       key={unikId}
       className={`flex justify-between items-center w-full sm:w-96 p-2 bg-white text-black rounded-lg shadow-md ${className}`}
     >
-      <div className="flex items-center  gap-2">
+      <div  className="flex items-center gap-2">
         <img
+        onClick={onClick}
           className="rounded-full w-12 h-12"
           src={mentorImgAddress}
           alt="teacher"

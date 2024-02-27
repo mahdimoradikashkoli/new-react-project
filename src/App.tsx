@@ -30,6 +30,8 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Filter from "./pages/search/filter/filter";
+const MentorDetailsLayout=React.lazy(()=>import("./components/mentorDetailsLayout/mentorDetailsLayout"))
+const MentorDetails=React.lazy(()=>import("./pages/mentorDetails/mentorDetails"))
 const Notification=React.lazy(()=>import("./pages/notification/notification"))
 const AllContinueLearning=React.lazy(()=>import("./pages/allContinueLearning/allContinueLearning"))
 const SearchcourseAndMentor =React.lazy(()=>import("./pages/search/searchCourseAndMentor/searchCourseAndMentor"))
@@ -362,6 +364,20 @@ const route = createBrowserRouter([
         path:"/search/filter",
         element:<Suspense fallback={<h1>Loadong...</h1>}>
           <Filter/>
+        </Suspense>
+      }
+    ]
+  },
+  {
+    path:"/mentor-details",
+    element:<Suspense fallback={<h1>Loading...</h1>}>
+      <MentorDetailsLayout/>
+    </Suspense>,
+    children:[
+      {
+        path:"/mentor-details",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <MentorDetails/>
         </Suspense>
       }
     ]

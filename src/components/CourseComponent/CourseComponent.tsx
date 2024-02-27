@@ -1,5 +1,5 @@
-import { BookMarkComponentType } from "./type"
-export const BookMarkComponent:React.FC<BookMarkComponentType>=({
+import { CourseComponentType } from "./type"
+export const CourseComponent:React.FC<CourseComponentType>=({
     courseImageAddress,
     corseSubject,
     mentorImageAddress,

@@ -133,6 +133,7 @@ const HomePage: React.FC = () => {
               topMentors.map((mentor: mentortyp) => {
                 return (
                   <div
+                  onClick={()=>navigate("/mentor-details")}
                     key={mentor._id}
                     className="flex flex-col items-center flex-shrink-0"
                   >

@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react"
 
-export type BookMarkComponentType={
+export type CourseComponentType={
     courseImageAddress:string,
     corseSubject:string,
     mentorImageAddress:string,
