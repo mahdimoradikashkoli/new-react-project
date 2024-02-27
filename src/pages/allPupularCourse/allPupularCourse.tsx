@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {instance} from "../../App"
-import { Navigation, PupularCourse } from "../../components";
+import { Navigation, CourseComponent } from "../../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {allPupularCourseType} from "./type"
@@ -37,7 +37,7 @@ const AllPupularCourse: React.FC = () => {
         {allPupularCourse?.length > 0 &&
           allPupularCourse.map((course: allPupularCourseType) => {
             return (
-              <PupularCourse
+              <CourseComponent
                 teacher={course.mentorName}
                 image={`http://localhost:4003${course.courseImageAddress}`}
                 key={course._id}

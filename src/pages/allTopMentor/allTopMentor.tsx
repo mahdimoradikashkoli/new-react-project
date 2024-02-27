@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { instance } from "../../App";
 import { MentorInfo, Navigation } from "../../components";
+import {mentortyp} from "./type"
+import { useNavigate } from "react-router-dom";
 
-type mentortyp = {
-  topMentorImage: string;
-  topMentorName: string;
-  _id: string;
-};
 const AllTopMentor = () => {
   const [AlltopMentors, setAllTopMentors] = useState([]);
   useEffect(() => {
@@ -16,6 +13,7 @@ const AllTopMentor = () => {
     };
     getAllTopMentor();
   }, []);
+  const navigate=useNavigate()
   return (
     <>
       <Navigation backAddress="/" subjectName="Top Mentors" />
@@ -24,6 +22,7 @@ const AllTopMentor = () => {
           {AlltopMentors?.length > 0 &&
             AlltopMentors.map((mentor: mentortyp) => {
               return MentorInfo({
+                onClick:()=>navigate("/mentor-details"),
                 unikId:mentor?._id,
                 mentorImgAddress: `http://localhost:4003${mentor?.topMentorImage}`,
                 mentorName: mentor?.topMentorName,

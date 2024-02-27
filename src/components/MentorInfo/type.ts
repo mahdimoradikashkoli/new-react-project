@@ -7,5 +7,6 @@ export type mentorInfoType={
     onclickPhoneIcon?:MouseEventHandler<HTMLImageElement>
     onclickChatIcon?:MouseEventHandler<HTMLImageElement>
     className?:string,
-    unikId?:string
+    unikId?:string,
+    onClick?:MouseEventHandler<HTMLImageElement>
 }

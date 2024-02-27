@@ -32,7 +32,7 @@ export const Navigation: React.FC<navigationType> = ({
           </button>
         </div>
         {subjectName && (
-          <h2 className="text-xl font-medium ml-20 text-blue-800">
+          <h2 className="text-xl font-medium ml-16 text-blue-800 w-fit">
             {subjectName}
           </h2>
         )}

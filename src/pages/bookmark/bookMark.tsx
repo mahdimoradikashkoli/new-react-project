@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookMarkComponent, Button, FooterNavigation, Navigation } from "../../components";
+import { CourseComponent, Button, FooterNavigation, Navigation } from "../../components";
 import $ from "jquery";
 
 const BookMark = () => {
@@ -77,7 +77,7 @@ const BookMark = () => {
           </ul>
 
         <div className="p-3 fixed top-28 left-0 pb-56 right-0 flex flex-col gap-2 sm:gap-4 h-screen overflow-y-auto w-full mt-4 sm:flex-row sm:!flex-wrap ">
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -85,7 +85,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -93,7 +93,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -101,7 +101,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -109,7 +109,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -117,7 +117,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -125,7 +125,7 @@ const BookMark = () => {
             mentorName="Mahdi Moradi"
             onClick={handleShowHiddenDiv}
           />
-          <BookMarkComponent
+          <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -138,7 +138,7 @@ const BookMark = () => {
       <FooterNavigation  classNameBookMark="!border-blue-700"/>
       <div id="hiddenDiv" className="hidden p-2 pb-8 w-full bg-slate-300 h-fit text-black rounded-t-3xl absolute left-0 right-0 bottom-0 z-40">
         <p className="text-center font-medium text-lg mb-5">Remove from Favarite?</p>
-        <BookMarkComponent
+        <CourseComponent
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
