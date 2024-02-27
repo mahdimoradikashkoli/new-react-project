@@ -10,7 +10,7 @@ export const FooterNavigation: React.FC<footerNavigationType> = ({
 
     const navigate=useNavigate()
   return (
-    <div className="fixed bottom-0 w-full bg-white h-20 rounded-t-lg flex items-center px-3 justify-around z-30">
+    <div className="fixed bottom-0 w-full bg-white border-t-2 shadow-lg h-20 rounded-t-lg flex items-center px-3 justify-around z-30">
       <img
         onClick={()=>navigate("/")}
         className={`w-12 h-12 cursor-pointer border-2 border-transparent ${classNameHome}`}
@@ -30,7 +30,7 @@ export const FooterNavigation: React.FC<footerNavigationType> = ({
         alt="bookmark"
       />
       <img
-        onClick={() => navigate("")}
+        onClick={() => navigate("/chat")}
         className={`w-12 h-12 cursor-pointer border-2 border-transparent  ${classNameCHat}`}
         src="/footerimg/chat1.png"
         alt="chat"

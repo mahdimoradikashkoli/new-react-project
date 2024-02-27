@@ -52,6 +52,7 @@ const CourseDetailes: React.FC = () => {
         }}
       >
         <Navigation
+        onClick={handleStopSong}
           className="justify-between"
           backAddress="/"
           shareImage="/icons/sharepng.png"

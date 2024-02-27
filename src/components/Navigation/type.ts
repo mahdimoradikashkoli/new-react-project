@@ -11,4 +11,5 @@ export type navigationType = {
   onClickShare?: MouseEventHandler<HTMLImageElement>;
   onClickSreach?: MouseEventHandler<HTMLImageElement>;
   onClickBookMark?: MouseEventHandler<HTMLImageElement>;
+  classNameSubjectName?:string
 };

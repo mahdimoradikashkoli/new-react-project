@@ -29,7 +29,7 @@ export const MentorInfo: React.FC<mentorInfoType> = ({
       <div className="flex gap-3">
         <img
           onClick={onclickPhoneIcon}
-          className="rounded-full w-9 h-9"
+          className="rounded-full w-9 h-9 cursor-pointer"
           src="/icons/call.png"
           alt="call image"
         />

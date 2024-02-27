@@ -11,7 +11,8 @@ export const Navigation: React.FC<navigationType> = ({
   onClick,
   onClickShare,
   onClickSreach,
-  onClickBookMark
+  onClickBookMark,
+  classNameSubjectName
 }) => {
   const navigate = useNavigate();
   return (
@@ -32,7 +33,7 @@ export const Navigation: React.FC<navigationType> = ({
           </button>
         </div>
         {subjectName && (
-          <h2 className="text-xl font-medium ml-16 text-blue-800 w-fit">
+          <h2 className={`text-xl font-medium ml-16 text-slate-500 w-fit ${classNameSubjectName}`}>
             {subjectName}
           </h2>
         )}
