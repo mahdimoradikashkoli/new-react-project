@@ -15,7 +15,7 @@ export const PupularCourse: React.FC<PupularCourseType> = ({
 
       <div className="flex items-center z-10 absolute top-3 left-2 bg-slate-500 w-18 h-10 p-0.5 gap-1 rounded-md">
         <button className="flex">
-          <img className="w-6 h-6" src="/imagehome/star-kh.png" alt="star" />
+          <img className="w-6 h-6 " src="/imagehome/star-kh.png" alt="star" />
         </button>
         <p className="text-black text-lg pt-1">4.8</p>
       </div>
@@ -26,7 +26,7 @@ export const PupularCourse: React.FC<PupularCourseType> = ({
           alt="bookmark"
         />
       </div>
-      <img onClick={onClick} className="rounded-lg relative  h-48 object-cover" src={image} alt="course png" />
+      <img onClick={onClick} className="rounded-lg relative cursor-pointer h-48 object-cover" src={image} alt="course png" />
       <p className="text-lg font-medium">{description}</p>
       <div className="flex items-center gap-1">
         <img

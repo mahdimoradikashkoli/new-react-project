@@ -20,7 +20,7 @@ const BookMark = () => {
     <>
       <div className="p-3">
         <Navigation
-          className="justify-between bg-slate-200 rounded-lg p-2"
+          className="justify-between rounded-lg p-2"
           backAddress="/"
           subjectName="Bookmark"
           searchIcon="/icons/search.png"

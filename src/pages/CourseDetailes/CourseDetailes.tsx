@@ -52,6 +52,7 @@ const CourseDetailes: React.FC = () => {
         }}
       >
         <Navigation
+        onClick={handleStopSong}
           className="justify-between"
           backAddress="/"
           shareImage="/icons/sharepng.png"
@@ -141,6 +142,7 @@ const CourseDetailes: React.FC = () => {
           <hr className="border-t-2" />
           {selectedTab === "about" && (
             <About
+            onClickMentorImage={()=>navigate("/mentor-details/course-detailes")}
               aboutCourse={courseInfo!.aboutCourse}
               access={courseInfo!.access}
               customKey={courseInfo!._id}

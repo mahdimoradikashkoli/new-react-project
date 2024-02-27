@@ -65,7 +65,7 @@ export const Lessons: React.FC<LessonsType> = ({
   }: {
     progress: number;
     onClick: (e: React.MouseEvent) => void;
-  }) => {
+  }) => { 
     return (
       <div
         className={`w-44 h-1 cursor-pointer rounded-3xl bg-slate-500 `}
@@ -112,14 +112,14 @@ export const Lessons: React.FC<LessonsType> = ({
         </div>
         {isPlaying ? (
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full cursor-pointer"
             onClick={stopButton}
             src="/icons/stopbutton.png"
             alt="stopbutton"
           />
         ) : (
           <img
-            className="w-12 h-12 rounded-full"
+            className="w-12 h-12 rounded-full cursor-pointer"
             onClick={playButton}
             src="/icons/playbutton.png"
             alt="playbutton"

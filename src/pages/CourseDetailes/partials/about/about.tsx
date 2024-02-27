@@ -13,7 +13,7 @@ export const About: React.FC<courseDetailesType> = ({
   numberOfStudent,
   subtitle,
   customKey,
-  subjectCourse
+  subjectCourse,onClickMentorImage
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -43,7 +43,8 @@ export const About: React.FC<courseDetailesType> = ({
       <h1 className="text-xl text-black font-medium mt-3">Tutor</h1>
       <MentorInfo className="mt-2" mentorImgAddress={mentorImageAddress}
       mentorName={mentorName}
-      subjectCourse={subjectCourse}/>
+      subjectCourse={subjectCourse}
+      onClick={onClickMentorImage}/>
       <h1 className="text-xl text-black font-medium mt-3">Info</h1>
       <div className="grid grid-cols-2 gap-y-2 mt-3">
         <div>

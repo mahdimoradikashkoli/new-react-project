@@ -29,7 +29,10 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Filter from "./pages/search/filter/filter";
+const Filter=React.lazy(()=>import("./pages/search/filter/filter"))
+const DoingChat=React.lazy(()=>import("./pages/chat/doingChat/doingChat"))
+const ChatLayout=React.lazy(()=>import("./components/ChatLayout/ChatLayout"))
+const Chatting=React.lazy(()=>import("./pages/chat/chat"))
 const MentorDetailsLayout=React.lazy(()=>import("./components/mentorDetailsLayout/mentorDetailsLayout"))
 const MentorDetails=React.lazy(()=>import("./pages/mentorDetails/mentorDetails"))
 const Notification=React.lazy(()=>import("./pages/notification/notification"))
@@ -375,9 +378,28 @@ const route = createBrowserRouter([
     </Suspense>,
     children:[
       {
-        path:"/mentor-details",
+        path:"/mentor-details/:rout",
         element:<Suspense fallback={<h1>Loading...</h1>}>
           <MentorDetails/>
+        </Suspense>
+      }
+    ]
+  },
+  {
+    path:"/chat",
+    element:<Suspense fallback={<h1>Loading...</h1>}>
+      <ChatLayout/>
+    </Suspense>,
+    children:[
+      {
+        path:'/chat',
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <Chatting/>
+        </Suspense>
+      },{
+        path:"/chat/pv",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <DoingChat/>
         </Suspense>
       }
     ]

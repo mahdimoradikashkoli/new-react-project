@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <div>
-        <div className="bg-blue-600 w-full h-52 rounded-bl-2xl rounded-br-3xl relative p-3">
+        <div className="bg-blue-600 w-full h-52 rounded-b-3xl relative p-3">
           <h1 className="text-3xl font-bold relative top-6 ">hi,{userName}</h1>
           <p className="text-base relative top-7 ">Let's start learning!</p>
           <img
@@ -133,7 +133,7 @@ const HomePage: React.FC = () => {
               topMentors.map((mentor: mentortyp) => {
                 return (
                   <div
-                  onClick={()=>navigate("/mentor-details")}
+                  onClick={()=>navigate("/mentor-details/back-home")}
                     key={mentor._id}
                     className="flex flex-col items-center flex-shrink-0"
                   >
