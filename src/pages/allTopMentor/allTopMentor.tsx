@@ -22,7 +22,7 @@ const AllTopMentor = () => {
           {AlltopMentors?.length > 0 &&
             AlltopMentors.map((mentor: mentortyp) => {
               return MentorInfo({
-                onClick:()=>navigate("/mentor-details"),
+                onClick:()=>navigate("/mentor-details/see-all"),
                 unikId:mentor?._id,
                 mentorImgAddress: `http://localhost:4003${mentor?.topMentorImage}`,
                 mentorName: mentor?.topMentorName,

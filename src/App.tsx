@@ -375,7 +375,7 @@ const route = createBrowserRouter([
     </Suspense>,
     children:[
       {
-        path:"/mentor-details",
+        path:"/mentor-details/:rout",
         element:<Suspense fallback={<h1>Loading...</h1>}>
           <MentorDetails/>
         </Suspense>

@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export type courseDetailesType = {
     aboutCourse: string;
     access: string;
@@ -9,5 +11,6 @@ export type courseDetailesType = {
     numberOfStudent: string | number;
     subtitle: string;
     customKey:string;
-    subjectCourse:string
+    subjectCourse:string,
+    onClickMentorImage?:MouseEventHandler<HTMLImageElement>
   };

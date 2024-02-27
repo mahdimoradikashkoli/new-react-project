@@ -1,17 +1,30 @@
 import { useState } from "react";
 import { CourseComponent, Navigation } from "../../components";
 import { Reveiw } from "./partials/reveiw/reveiw";
-// import { AboutMentorDetails } from "./partials/about";
+import { AboutMentorDetails } from "./partials/about";
 
+import $ from "jquery";
+import { useParams } from "react-router-dom";
+import { ShareButton } from "./partials/shareButton";
 const MentorDetails = () => {
   const [handleTitle, setHandleTitle] = useState("about");
+  
+  const showShareNavbar=()=>{
+    const hiddenDiv=document.querySelector("#sharenavbar")
+    if(hiddenDiv){
+      $(hiddenDiv)?.fadeIn("slow")
+    }
+  }
+const {rout}=useParams()
+console.log(rout)
   return (
     <>
       <Navigation
-        backAddress=""
+        backAddress={`${rout === "back-home" ? "/" :rout === "course-detailes"? "/coursedetailes": "/layoutseeall/alltopmentor"}`}
         subjectName="Mentor Details"
         shareImage="/icons/sharepng.png"
         className="justify-between"
+        onClickShare={showShareNavbar}
       />
       <div className="px-3 py-16">
         <div className="flex items-center justify-between sm:w-96">
@@ -105,12 +118,12 @@ const MentorDetails = () => {
         </div>
         <hr />
         <div className="h-screen w-full overflow-y-auto">
-          {/* { Boolean(handleTitle) && handleTitle === "about" && <AboutMentorDetails Cources={32}
+          { Boolean(handleTitle) && handleTitle === "about" && <AboutMentorDetails Cources={32}
           descriptionforMentor="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi ex dignissimos quaerat. Non quae hic dolor eum, suscipit perferendis necessitatibus mollitia sint nisi, esse iusto ratione similique veniam voluptate fuga."
           numberOfStudent={12345}
-          />} */}
+          />}
 
-          {/* { Boolean(handleTitle) && handleTitle === "cources" && (<><h3 className="text-lg mt-3">
+          { Boolean(handleTitle) && handleTitle === "cources" && (<><h3 className="text-lg mt-3">
             Cources<span className="text-blue-700">(32)</span>
           </h3>
           <div className="flex flex-col gap-1 mt-2 h-fit sm:flex-row sm:flex-wrap sm:gap-4">
@@ -146,11 +159,12 @@ const MentorDetails = () => {
               mentorImageAddress="/imagehome/girl.png"
               mentorName="Johon Doe"/>
             
-          </div></>)} */}
+          </div></>)}
 
-          <Reveiw/>
+          {Boolean(handleTitle) && handleTitle === "reveiw" && <Reveiw/>}
         </div>
       </div>
+      <ShareButton/>
     </>
   );
 };
