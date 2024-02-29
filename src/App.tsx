@@ -29,6 +29,14 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import PrivacyPoliy from "./pages/setting/privacyPolicy/privacyPolicy";
+const HelpCenter=React.lazy(()=>import("./pages/setting/helpCenter/helpCenter"))
+const PaymentMethods=React.lazy(()=>import("./pages/setting/paymentMethods/paymentMethods"))
+const PasswordManager=React.lazy(()=>import("./pages/setting/passwordManager/passwordManager"))
+const Setting=React.lazy(()=>import("./pages/setting/setting"))
+const YourProfile=React.lazy(()=>import("./pages/profile/yourProfile"))
+const ProfileLayout=React.lazy(()=>import("./components/ProfileLayout/ProfileLayout"))
+const Profile=React.lazy(()=>import("./pages/profile/profile"))
 const Filter=React.lazy(()=>import("./pages/search/filter/filter"))
 const DoingChat=React.lazy(()=>import("./pages/chat/doingChat/doingChat"))
 const ChatLayout=React.lazy(()=>import("./components/ChatLayout/ChatLayout"))
@@ -177,13 +185,37 @@ const route = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"/setting",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <Setting/>
+        </Suspense>
+      },
+      {
+        path:"/paymentmethods",
+        element:<Suspense>
+          <PaymentMethods/>
+        </Suspense>
+      },
+      {
+        path:"/passwordmanager",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <PasswordManager/>
+        </Suspense>
+      },
+      {
+        path:"/helpcenter",
+        element:<Suspense>
+          <HelpCenter/>
+        </Suspense>
+      }
     ],
   },
   {
     path: "/layoutseeall",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        <LayoutSeeAll />
+         {cookies.get("token")? <LayoutSeeAll /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -225,7 +257,7 @@ const route = createBrowserRouter([
     path: "/coursedetailes",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        <Outlet />
+         {cookies.get("token")? <Outlet /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -243,7 +275,7 @@ const route = createBrowserRouter([
     path: "/review",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        <Review />
+         {cookies.get("token")?  <Review /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -269,7 +301,7 @@ const route = createBrowserRouter([
     path: "/payment",
     element: (
       <Suspense fallback={<h1>Loading...</h1>}>
-        <PaymentLayout />
+        {cookies.get("token")?   <PaymentLayout /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -325,7 +357,7 @@ const route = createBrowserRouter([
           </div>
         }
       >
-        <CourseLayout />
+         {cookies.get("token")?    <CourseLayout /> :<Navigate to={"/auth/register"}/>}
       </Suspense>
     ),
     children: [
@@ -348,7 +380,8 @@ const route = createBrowserRouter([
   {
     path:"/search",
     element:<Suspense fallback={<h1>Loading...</h1>}>
-      <SearchLayout/>
+      {cookies.get("token")?    <SearchLayout/> :<Navigate to={"/auth/register"}/>}
+      
     </Suspense>,
     children:[
       {
@@ -374,7 +407,8 @@ const route = createBrowserRouter([
   {
     path:"/mentor-details",
     element:<Suspense fallback={<h1>Loading...</h1>}>
-      <MentorDetailsLayout/>
+       {cookies.get("token")?   <MentorDetailsLayout/> :<Navigate to={"/auth/register"}/>}
+      
     </Suspense>,
     children:[
       {
@@ -388,7 +422,8 @@ const route = createBrowserRouter([
   {
     path:"/chat",
     element:<Suspense fallback={<h1>Loading...</h1>}>
-      <ChatLayout/>
+      {cookies.get("token")?   <ChatLayout/> :<Navigate to={"/auth/register"}/>}
+      
     </Suspense>,
     children:[
       {
@@ -403,6 +438,29 @@ const route = createBrowserRouter([
         </Suspense>
       }
     ]
+  },
+  {
+    path:"/profile",
+    element:<Suspense fallback={<h1>Loading...</h1>}>
+      {cookies.get("token")?  <ProfileLayout/> :<Navigate to={"/auth/register"}/>}
+    </Suspense>,
+    children:[
+      {
+        path:"/profile/user",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <Profile/>
+        </Suspense>
+      },{
+        path:"/profile/userprofile",
+        element:<Suspense fallback={<h1>Loading...</h1>}>
+          <YourProfile/>
+        </Suspense>
+      },
+    ]
+  },
+  {
+    path:"/privacypolicy/:rout",
+    element:<PrivacyPoliy/>
   }
 ]);
 const App = () => {
