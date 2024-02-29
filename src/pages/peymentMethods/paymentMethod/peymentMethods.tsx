@@ -31,28 +31,28 @@ const PeymentMethods = () => {
 
         <h1 className="mt-3 font-bold text-xl ">More Peyment Options</h1>
         <div className="flex flex-col mt-3 gap-3">
-          <button
-            onClick={() => Navigate("/payment/reviewsummery/Peypal")}
+          <div
             className="w-full bg-white p-2 rounded-lg flex items-center gap-3"
           >
             <img
-              className="rounded-md w-10 h-10"
+             onClick={() => Navigate("/payment/reviewsummery/Peypal")}
+              className="rounded-md w-10 h-10 cursor-pointer" 
               src="/icons/paypal.png"
               alt="papal logo"
             />
             <p className="text-slate-500 text-base">Paypal</p>
-          </button>
-          <button
-            onClick={() => Navigate("/payment/reviewsummery/Apple")}
+          </div>
+          <div
             className="w-full bg-white p-2 rounded-lg flex items-center gap-3"
           >
             <img
-              className="rounded-md w-10 h-10"
+              onClick={() => Navigate("/payment/reviewsummery/Apple")}
+              className="rounded-md w-10 h-10 cursor-pointer"
               src="/icons/apple.png"
               alt="apple logo"
             />
             <p className="text-slate-500 text-base">Apple Pay</p>
-          </button>
+          </div>
         </div>
       </div>
     </>

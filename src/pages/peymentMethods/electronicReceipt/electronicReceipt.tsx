@@ -49,7 +49,7 @@ const handleShareReceipt=()=>{
         shareImage="/icons/sharepng.png"
         onClickShare={handleShareReceipt}
       />
-      <div id="receipt" className="px-3 pt-20 pb-20">
+      <div id="receipt" className="px-3 pt-20 pb-20 sm:flex sm:flex-col sm:justify-center w-full sm:items-center">
         <img className="w-80" src="/image/barcode.png" alt="barcode image" />
         <div className="flex flex-col gap-2 mt-5">
           <div className="flex items-center justify-between w-80">
