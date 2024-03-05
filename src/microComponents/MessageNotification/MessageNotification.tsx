@@ -7,7 +7,7 @@ export const MessageNotification: React.FC<messageNotificationType> = ({
   className
 }) => {
   return (
-    <div className={`flex w-fit bg-white p-1 rounded-md shadow-lg border-b-2 border-slate-400 ${className}`}>
+    <div className={`flex w-fit bg-white p-1 rounded-md shadow-xl border-b-2 border-slate-400 ${className}`}>
       <div className="flex items-center gap-2">
         <img
           className="rounded-full w-16 h16 object-cover"

@@ -10,7 +10,7 @@ const Setting=()=>{
         <div className="px-3 pt-20 flex flex-col gap-3">
             <HandleItems itemIcon="/imagehome/profile.png"
             itemName="Notification Setting"
-            onClick={()=>navigate('')}/>
+            onClick={()=>navigate('/notification/setting')}/>
             <HandleItems itemIcon="/icons/passwordkey.png"
             itemName="Password Manager"
             onClick={()=>navigate('/passwordmanager')}/>

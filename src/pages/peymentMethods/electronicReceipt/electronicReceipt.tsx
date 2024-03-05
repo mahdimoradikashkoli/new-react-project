@@ -17,7 +17,7 @@ const ElectronicReceipt = () => {
       const data = await instance.get(`/coursedetailes/${courseId}`);
       setCourseInfo(data.data.courseDetailes);
     };
-    fetchData();
+    courseId && fetchData();
   }, []);
 
   const downloadReceipt = () => {
@@ -58,27 +58,27 @@ const handleShareReceipt=()=>{
           </div>
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Mentor</h4>
-            <p className="text-sm text-slate-500 ">{courseInfo?.mentorName}</p>
+            <p className="text-sm text-slate-500 ">{courseInfo?.mentorName??"Crise Hamsorce"}</p>
           </div>
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Language</h4>
-            <p className="text-sm text-slate-500 ">{courseInfo?.language}</p>
+            <p className="text-sm text-slate-500 ">{courseInfo?.language??"English"}</p>
           </div>
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Lessons</h4>
             <p className="text-sm text-slate-500 ">
-              {courseInfo?.numberOfLessons}
+              {courseInfo?.numberOfLessons??"9"}
             </p>
           </div>
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Level</h4>
-            <p className="text-sm text-slate-500 ">{courseInfo?.level}</p>
+            <p className="text-sm text-slate-500 ">{courseInfo?.level??"beginner"}</p>
           </div>
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Amount</h4>
-            <p className="text-sm text-slate-500 ">{courseInfo?.courseprice}</p>
+            <p className="text-sm text-slate-500 ">{courseInfo?.courseprice??"$2000.00"}</p>
           </div>
           <div className="flex items-center justify-between w-80">
             <h4 className="text-lg text-blue-700 font-medium"> Tax</h4>
@@ -88,7 +88,7 @@ const handleShareReceipt=()=>{
 
         <div className="flex items-center justify-between w-80 mt-5 gap-2">
           <h4 className="text-lg text-blue-700 font-medium"> Total</h4>
-          <p className="text-sm text-slate-500 ">{courseInfo?.courseprice}</p>
+          <p className="text-sm text-slate-500 ">{courseInfo?.courseprice??"$2000.00"}</p>
         </div>
         <div className="flex flex-col gap-3 mt-4">
           <div className="flex items-center justify-between w-80">

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import {instance} from "../../App"
-import { Navigation, CourseComponent } from "../../components";
+import { instance } from "../../App";
+import { Navigation, PupularCourse } from "../../components";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {allPupularCourseType} from "./type"
+import { allPupularCourseType } from "./type";
 
 const Responsivecontainer = styled.div`
   padding: 1rem 1rem;
@@ -28,7 +28,7 @@ const AllPupularCourse: React.FC = () => {
     getAllPupularCourse();
   }, []);
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <Navigation backAddress="/" subjectName="pupular Course" />
@@ -37,15 +37,17 @@ const AllPupularCourse: React.FC = () => {
         {allPupularCourse?.length > 0 &&
           allPupularCourse.map((course: allPupularCourseType) => {
             return (
-              <CourseComponent
-                teacher={course.mentorName}
-                image={`http://localhost:4003${course.courseImageAddress}`}
-                key={course._id}
-                price={course.courseprice}
-                suggestion="Sea all"
-                teacherImg={`http://localhost:4003${course.mentorImageAddress}`}
-                onClick={()=>{
-                  navigate(`/coursedetailes/?courseid=${course._id}`)
+              <PupularCourse
+              description={course?.corseSubject}
+                teacher={course?.mentorName}
+                image={`http://localhost:4003${course?.courseImageAddress}`}
+                key={course?._id}
+                price={course?.courseprice}
+                suggestion="best sellers"
+                teacherImg={`http://localhost:4003${course?.mentorImageAddress}`}
+                onClick={() => {
+                  navigate(`/coursedetailes/ap?courseid=${course?._id}`);
+                  localStorage.setItem("courseId", JSON.stringify(course?._id));
                 }}
               />
             );

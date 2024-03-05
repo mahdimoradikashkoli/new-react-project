@@ -6,7 +6,7 @@ export const SearchNavbar:React.FC<searchNavbarType>=({onChange,backaddress})=>{
         <div className="flex fixed top-3 left-3 right-3 z-20 w-full gap-10  ">
         <img
           onClick={() => navigate(`${backaddress}`)}
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full cursor-pointer"
           src="/icons/back.jpg"
           alt="back icon"
         />

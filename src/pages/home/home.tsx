@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
   Categories,
   ContinueLearning,
@@ -14,6 +14,7 @@ import { PupularCourseType } from "./type";
 import { instance } from "../../App";
 
 const HomePage: React.FC = () => {
+  const [searchSeggestions,setSearchSeggestions]=useState("")
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [popularCourses, setPopularCourses] = useState([]);
@@ -43,6 +44,20 @@ const HomePage: React.FC = () => {
     }
   }, [loading, categories]);
 
+  const searchValue=["art","marketing","cooding","business","accounting","science","English","math"]
+  const handleOnBlue=(e:ChangeEvent<HTMLInputElement>)=>{
+    const value=e.target.value
+    const matchedSuggestions = searchValue.filter(word => word.includes(value));
+    if(matchedSuggestions.length > 0){
+      setSearchSeggestions(matchedSuggestions[0])
+    }else{
+      setSearchSeggestions("not found")
+    }
+    if(value === ""){
+      setSearchSeggestions("")
+    }
+  }
+
   const userName = JSON.parse(localStorage.getItem("userName")!);
   return (
     <>
@@ -51,20 +66,22 @@ const HomePage: React.FC = () => {
           <h1 className="text-3xl font-bold relative top-6 ">hi,{userName}</h1>
           <p className="text-base relative top-7 ">Let's start learning!</p>
           <img
-          onClick={()=>navigate("notification")}
-            className="bg-white rounded-full w-10 h-10 absolute right-3 top-12"
+          onClick={()=>navigate("/notification/backhome")}
+            className="bg-white rounded-full w-10 h-10 absolute right-3 top-12 cursor-pointer"
             src="/icons/bell.png"
             alt="bell image"
           />
-          <div className="flex items-center gap-2 relative top-16 w-full">
+          <div className="flex  gap-2 relative top-16 w-full">
             <Search
-              onClickSearch={() => navigate("/search")}
+            navigateToSearchResult={()=>searchSeggestions === "not found"? "" :navigate("/search/mentor-and-course/serach-result")}
+            onBlur={handleOnBlue}
               className="flex items-center bg-white rounded-lg w-full border-2 border-transparent focus-within:border-slate-700"
               searchtitle="search"
+              seggestions={searchSeggestions}
             />
             <img
               onClick={() => navigate("/search/filter")}
-              className="w-11 h-11 rounded-lg"
+              className="w-11 h-11 rounded-lg cursor-pointer"
               src="/icons/filter(1).png"
               alt="filter icon"
             />
@@ -83,6 +100,7 @@ const HomePage: React.FC = () => {
           <div className="flex  gap-8 mt-5 overflow-x-auto">
             {categories.map((categorie: categorietype2) => {
               return Categories({
+                onClick:()=>navigate("/search/mentor-and-course/home"),
                 img: `http://localhost:4003${categorie.img}`,
                 subject: categorie.categorieName,
                 key: categorie._id,
@@ -102,15 +120,15 @@ const HomePage: React.FC = () => {
               popularCourses.map((course: PupularCourseType) => {
                 return (
                   <PupularCourse
-                    key={course._id}
-                    image={`http://localhost:4003${course.courseImageAddress}`}
-                    description={course.corseSubject}
-                    teacherImg={`http://localhost:4003${course.mentorImageAddress}`}
-                    teacher={course.mentorName}
-                    price={course.courseprice}
-                    suggestion="see all"
+                    key={course?._id}
+                    image={`http://localhost:4003${course?.courseImageAddress}`}
+                    description={course?.corseSubject}
+                    teacherImg={`http://localhost:4003${course?.mentorImageAddress}`}
+                    teacher={course?.mentorName}
+                    price={course?.courseprice}
+                    suggestion="Best sellers"
                     onClick={() => [
-                      navigate(`/coursedetailes`),
+                      navigate(`/coursedetailes/back-home`),
                       localStorage.setItem(
                         "courseId",
                         JSON.stringify(course._id)
@@ -134,15 +152,15 @@ const HomePage: React.FC = () => {
                 return (
                   <div
                   onClick={()=>navigate("/mentor-details/back-home")}
-                    key={mentor._id}
-                    className="flex flex-col items-center flex-shrink-0"
+                    key={mentor?._id}
+                    className="flex flex-col items-center flex-shrink-0 cursor-pointer"
                   >
                     <img
                       className="w-16 h-16 object-cover rounded-full"
-                      src={`http://localhost:4003${mentor.topMentorImage}`}
+                      src={`http://localhost:4003${mentor?.topMentorImage}`}
                       alt="mentor image"
                     />
-                    <p className="text-base">{mentor.topMentorName}</p>
+                    <p className="text-base">{mentor?.topMentorName}</p>
                   </div>
                 );
               })}
@@ -156,6 +174,7 @@ const HomePage: React.FC = () => {
 
           <div className="flex items-center gap-8 overflow-x-auto">
             <ContinueLearning
+            onClickCourseImage={()=> navigate("/coursedetailes/home")}
               courseImage="/imagehome/teacher.png"
               className="mt-5 flex-shrink-0"
               NumberOfLessons={25}
@@ -166,6 +185,7 @@ const HomePage: React.FC = () => {
               progressBar={78}
             />
             <ContinueLearning
+            onClickCourseImage={()=> navigate("/coursedetailes/home")}
               courseImage="/imagehome/teacher.png"
               className="mt-5  flex-shrink-0"
               NumberOfLessons={25}
@@ -176,6 +196,7 @@ const HomePage: React.FC = () => {
               progressBar={78}
             />
             <ContinueLearning
+            onClickCourseImage={()=> navigate("/coursedetailes/home")}
               courseImage="/imagehome/teacher.png"
               className="mt-5 flex-shrink-0"
               NumberOfLessons={25}
@@ -186,6 +207,7 @@ const HomePage: React.FC = () => {
               progressBar={78}
             />
             <ContinueLearning
+            onClickCourseImage={()=> navigate("/coursedetailes/home")}
               courseImage="/imagehome/teacher.png"
               className="mt-5 flex-shrink-0"
               NumberOfLessons={25}

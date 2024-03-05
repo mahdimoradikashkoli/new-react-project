@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Navigation } from "../../../components";
 import { StyleDivImage } from "./style";
 import { instance } from "../../../App";
-import {courseInfoType} from "../../../pages"
+import { courseInfoType } from "../../../pages";
+import { useNavigate } from "react-router-dom";
 
 const ReviewCourse = () => {
   const [courseInfo, setCourseInfo] = useState<courseInfoType>();
@@ -14,12 +15,15 @@ const ReviewCourse = () => {
     };
     fetchData();
   }, []);
+  const navigate=useNavigate()
   return (
     <>
-      <StyleDivImage style={{
+      <StyleDivImage
+        style={{
           backgroundImage: `url(http://localhost:4003${courseInfo?.courseImageAddress})`,
-        }}>
-        <Navigation backAddress="" />
+        }}
+      >
+        <Navigation backAddress="/coursedetailes/cd" />
       </StyleDivImage>
       <div
         style={{ height: "37.5rem" }}
@@ -48,29 +52,31 @@ const ReviewCourse = () => {
           <div className="flex justify-between mt-4">
             <div className="flex items-center gap-0.5">
               <img
-                className="w-5 h-5 rounded-full"
+                className="sm:w-5 sm:h-5 w-4 h-4 rounded-full"
                 src="/icons/iconprofile.png"
                 alt="icon profile"
               />
-              <span className="text-slate-600 font-medium">
+              <span className="text-slate-600 sm:text-lg text-xs sm:font-medium">
                 {courseInfo?.mentorName}
               </span>
             </div>
             <div className="flex items-center gap-0.5">
               <img
-                className="w-5 h-5 rounded-full"
+                className="sm:w-5 sm:h-5 h-3 w-3 rounded-full"
                 src="/icons/iconplay.png"
                 alt="icon play"
               />
-              <span className="text-slate-600 font-medium">{`${courseInfo?.numberOfLessons} Lessons`}</span>
+              <span onClick={()=>navigate("/course/lesson-certificate/cd")} className="text-slate-600 text-xs cursor-pointer sm:text-lg sm:font-medium">{`${courseInfo?.numberOfLessons} Lessons`}</span>
             </div>
             <div className="flex items-center gap-0.5">
               <img
-                className="w-5 h-5 rounded-full"
+                className="sm:w-6 sm:h-6 w-3 h-3 rounded-full"
                 src="/icons/iconcertificate.png"
                 alt="icon certificate"
               />
-              <span className="text-slate-600 font-medium">cerificate</span>
+              <span onClick={()=>navigate("/course/lesson-certificate/certificate")} className="text-slate-600 cursor-pointer text-xs sm:text-lg sm:font-medium">
+                cerificate
+              </span>
             </div>
           </div>
           <hr className="border-t-2 border-slate-300 mt-5" />
@@ -106,8 +112,8 @@ const ReviewCourse = () => {
           </div>
           <div className="mt-4  w-full flex justify-center">
             <form className=" w-full md:w-8/12" action="">
-              <div className="flex flex-col  w-full">
-                <label className="font-medium" htmlFor="">
+              <div className="flex flex-col  w-full h-48">
+                <label className="font-medium" htmlFor="12">
                   Add detailed review
                 </label>
                 <textarea

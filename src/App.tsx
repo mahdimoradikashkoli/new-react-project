@@ -9,6 +9,7 @@ export const instance = axios.create({
     authorization: cookies.get("token"),
   },
 });
+
 instance.interceptors.response.use(
   (config) => {
     /** In dev, intercepts request and logs it into console for dev */
@@ -30,24 +31,48 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import PrivacyPoliy from "./pages/setting/privacyPolicy/privacyPolicy";
-const HelpCenter=React.lazy(()=>import("./pages/setting/helpCenter/helpCenter"))
-const PaymentMethods=React.lazy(()=>import("./pages/setting/paymentMethods/paymentMethods"))
-const PasswordManager=React.lazy(()=>import("./pages/setting/passwordManager/passwordManager"))
-const Setting=React.lazy(()=>import("./pages/setting/setting"))
-const YourProfile=React.lazy(()=>import("./pages/profile/yourProfile"))
-const ProfileLayout=React.lazy(()=>import("./components/ProfileLayout/ProfileLayout"))
-const Profile=React.lazy(()=>import("./pages/profile/profile"))
-const Filter=React.lazy(()=>import("./pages/search/filter/filter"))
-const DoingChat=React.lazy(()=>import("./pages/chat/doingChat/doingChat"))
-const ChatLayout=React.lazy(()=>import("./components/ChatLayout/ChatLayout"))
-const Chatting=React.lazy(()=>import("./pages/chat/chat"))
-const MentorDetailsLayout=React.lazy(()=>import("./components/mentorDetailsLayout/mentorDetailsLayout"))
-const MentorDetails=React.lazy(()=>import("./pages/mentorDetails/mentorDetails"))
-const Notification=React.lazy(()=>import("./pages/notification/notification"))
-const AllContinueLearning=React.lazy(()=>import("./pages/allContinueLearning/allContinueLearning"))
-const SearchcourseAndMentor =React.lazy(()=>import("./pages/search/searchCourseAndMentor/searchCourseAndMentor"))
-const SearchLayout=React.lazy(()=>import("./components/SearchLayout/SearchLayout"))
-const SearchPage=React.lazy(()=>import("./pages/search/searchPage/searchPage"))
+const HelpCenter = React.lazy(
+  () => import("./pages/setting/helpCenter/helpCenter")
+);
+const PaymentMethods = React.lazy(
+  () => import("./pages/setting/paymentMethods/paymentMethods")
+);
+const PasswordManager = React.lazy(
+  () => import("./pages/setting/passwordManager/passwordManager")
+);
+const Setting = React.lazy(() => import("./pages/setting/setting"));
+const YourProfile = React.lazy(() => import("./pages/profile/yourProfile"));
+const ProfileLayout = React.lazy(
+  () => import("./components/ProfileLayout/ProfileLayout")
+);
+const Profile = React.lazy(() => import("./pages/profile/profile"));
+const Filter = React.lazy(() => import("./pages/search/filter/filter"));
+const DoingChat = React.lazy(() => import("./pages/chat/doingChat/doingChat"));
+const ChatLayout = React.lazy(
+  () => import("./components/ChatLayout/ChatLayout")
+);
+const Chatting = React.lazy(() => import("./pages/chat/chat"));
+const MentorDetailsLayout = React.lazy(
+  () => import("./components/mentorDetailsLayout/mentorDetailsLayout")
+);
+const MentorDetails = React.lazy(
+  () => import("./pages/mentorDetails/mentorDetails")
+);
+const Notification = React.lazy(
+  () => import("./pages/notification/notification")
+);
+const AllContinueLearning = React.lazy(
+  () => import("./pages/allContinueLearning/allContinueLearning")
+);
+const SearchcourseAndMentor = React.lazy(
+  () => import("./pages/search/searchCourseAndMentor/searchCourseAndMentor")
+);
+const SearchLayout = React.lazy(
+  () => import("./components/SearchLayout/SearchLayout")
+);
+const SearchPage = React.lazy(
+  () => import("./pages/search/searchPage/searchPage")
+);
 const CourseLayout = React.lazy(
   () => import("./components/CourseLayout/CourseLayout")
 );
@@ -110,6 +135,13 @@ const Home = React.lazy(
     }>
 );
 
+const loading=()=>{
+  return (
+    <div className="flex flex-col items-center justify-center w-full h-screen">
+      <h1 className="text-3xl font-medium">Loading...</h1>
+    </div>
+  )
+}
 const route = createBrowserRouter([
   {
     path: "/auth",
@@ -148,15 +180,16 @@ const route = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
-       {cookies.get("token")? <Layout /> :<Navigate to={"/auth/register"}/>}
+      <Suspense fallback={
+        loading()}>
+        {cookies.get("token") ? <Layout /> : <Navigate to={"/auth/register"} />}
       </Suspense>
     ),
     children: [
       {
         path: "/",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <Home />
           </Suspense>
         ),
@@ -164,7 +197,7 @@ const route = createBrowserRouter([
       {
         path: "/bookmarks",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <BookMark />
           </Suspense>
         ),
@@ -172,57 +205,69 @@ const route = createBrowserRouter([
       {
         path: "/mycourse",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <MyCourse />
           </Suspense>
         ),
       },
       {
-        path: "/notification",
+        path: "/notification/:handleNotificationBack",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <Notification />
           </Suspense>
         ),
       },
       {
-        path:"/setting",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <Setting/>
-        </Suspense>
+        path: "/setting",
+        element: (
+          <Suspense fallback={loading()}>
+            <Setting />
+          </Suspense>
+        ),
       },
       {
-        path:"/paymentmethods",
-        element:<Suspense>
-          <PaymentMethods/>
-        </Suspense>
+        path: "/paymentmethods",
+        element: (
+          <Suspense fallback={loading()}>
+            <PaymentMethods />
+          </Suspense>
+        ),
       },
       {
-        path:"/passwordmanager",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <PasswordManager/>
-        </Suspense>
+        path: "/passwordmanager",
+        element: (
+          <Suspense fallback={loading()}>
+            <PasswordManager />
+          </Suspense>
+        ),
       },
       {
-        path:"/helpcenter",
-        element:<Suspense>
-          <HelpCenter/>
-        </Suspense>
-      }
+        path: "/helpcenter",
+        element: (
+          <Suspense fallback={loading()}>
+            <HelpCenter />
+          </Suspense>
+        ),
+      },
     ],
   },
   {
     path: "/layoutseeall",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
-         {cookies.get("token")? <LayoutSeeAll /> :<Navigate to={"/auth/register"}/>}
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <LayoutSeeAll />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
       </Suspense>
     ),
     children: [
       {
         path: "/layoutseeall/allcategorie",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <AllCategorie />
           </Suspense>
         ),
@@ -230,7 +275,7 @@ const route = createBrowserRouter([
       {
         path: "/layoutseeall/allpupularcourse",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <AllPupularCourse />
           </Suspense>
         ),
@@ -238,7 +283,7 @@ const route = createBrowserRouter([
       {
         path: "/layoutseeall/alltopmentor",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <AllTopMentor />
           </Suspense>
         ),
@@ -246,7 +291,7 @@ const route = createBrowserRouter([
       {
         path: "/layoutseeall/allcontinuelearning",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <AllContinueLearning />
           </Suspense>
         ),
@@ -256,15 +301,15 @@ const route = createBrowserRouter([
   {
     path: "/coursedetailes",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
-         {cookies.get("token")? <Outlet /> :<Navigate to={"/auth/register"}/>}
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? <Outlet /> : <Navigate to={"/auth/register"} />}
       </Suspense>
     ),
     children: [
       {
-        path: `/coursedetailes`,
+        path: `/coursedetailes/:handlerout`,
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <CourseDetailes />
           </Suspense>
         ),
@@ -274,15 +319,15 @@ const route = createBrowserRouter([
   {
     path: "/review",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
-         {cookies.get("token")?  <Review /> :<Navigate to={"/auth/register"}/>}
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? <Review /> : <Navigate to={"/auth/register"} />}
       </Suspense>
     ),
     children: [
       {
         path: "/review/reviewcourse",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <ReviewCourse />
           </Suspense>
         ),
@@ -290,7 +335,7 @@ const route = createBrowserRouter([
       {
         path: "/review/reviewmentor",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <ReviewMentor />
           </Suspense>
         ),
@@ -300,15 +345,19 @@ const route = createBrowserRouter([
   {
     path: "/payment",
     element: (
-      <Suspense fallback={<h1>Loading...</h1>}>
-        {cookies.get("token")?   <PaymentLayout /> :<Navigate to={"/auth/register"}/>}
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <PaymentLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
       </Suspense>
     ),
     children: [
       {
         path: "/payment/peymentmethods",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <PeymentMethods />
           </Suspense>
         ),
@@ -316,7 +365,7 @@ const route = createBrowserRouter([
       {
         path: "/payment/addcard",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <AddCard />
           </Suspense>
         ),
@@ -324,7 +373,7 @@ const route = createBrowserRouter([
       {
         path: "/payment/reviewsummery/:payment",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <ReviewSummery />
           </Suspense>
         ),
@@ -332,7 +381,7 @@ const route = createBrowserRouter([
       {
         path: "/payment/paymentresult",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <PaymentResult />
           </Suspense>
         ),
@@ -340,7 +389,7 @@ const route = createBrowserRouter([
       {
         path: "/payment/electronicreceipt",
         element: (
-          <Suspense fallback={<h1>Loading...</h1>}>
+          <Suspense fallback={loading()}>
             <ElectronicReceipt />
           </Suspense>
         ),
@@ -352,12 +401,14 @@ const route = createBrowserRouter([
     element: (
       <Suspense
         fallback={
-          <div className="flex flex-col justify-center w-full">
-            <h1>Loading...</h1>
-          </div>
+          loading()
         }
       >
-         {cookies.get("token")?    <CourseLayout /> :<Navigate to={"/auth/register"}/>}
+        {cookies.get("token") ? (
+          <CourseLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
       </Suspense>
     ),
     children: [
@@ -366,9 +417,7 @@ const route = createBrowserRouter([
         element: (
           <Suspense
             fallback={
-              <div className="flex flex-col justify-center">
-                <h1>Loading...</h1>
-              </div>
+              loading()
             }
           >
             <Course />
@@ -378,90 +427,129 @@ const route = createBrowserRouter([
     ],
   },
   {
-    path:"/search",
-    element:<Suspense fallback={<h1>Loading...</h1>}>
-      {cookies.get("token")?    <SearchLayout/> :<Navigate to={"/auth/register"}/>}
-      
-    </Suspense>,
-    children:[
+    path: "/search",
+    element: (
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <SearchLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
+      </Suspense>
+    ),
+    children: [
       {
-        path:"/search",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <SearchPage/>
-        </Suspense>
+        path: "/search",
+        element: (
+          <Suspense fallback={loading()}>
+            <SearchPage />
+          </Suspense>
+        ),
       },
       {
-        path:"/search/mentor-and-course",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <SearchcourseAndMentor/>
-        </Suspense>
+        path: "/search/mentor-and-course/:routCategory",
+        element: (
+          <Suspense fallback={loading()}>
+            <SearchcourseAndMentor />
+          </Suspense>
+        ),
       },
       {
-        path:"/search/filter",
-        element:<Suspense fallback={<h1>Loadong...</h1>}>
-          <Filter/>
-        </Suspense>
-      }
-    ]
-  },
-  {
-    path:"/mentor-details",
-    element:<Suspense fallback={<h1>Loading...</h1>}>
-       {cookies.get("token")?   <MentorDetailsLayout/> :<Navigate to={"/auth/register"}/>}
-      
-    </Suspense>,
-    children:[
-      {
-        path:"/mentor-details/:rout",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <MentorDetails/>
-        </Suspense>
-      }
-    ]
-  },
-  {
-    path:"/chat",
-    element:<Suspense fallback={<h1>Loading...</h1>}>
-      {cookies.get("token")?   <ChatLayout/> :<Navigate to={"/auth/register"}/>}
-      
-    </Suspense>,
-    children:[
-      {
-        path:'/chat',
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <Chatting/>
-        </Suspense>
-      },{
-        path:"/chat/pv",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <DoingChat/>
-        </Suspense>
-      }
-    ]
-  },
-  {
-    path:"/profile",
-    element:<Suspense fallback={<h1>Loading...</h1>}>
-      {cookies.get("token")?  <ProfileLayout/> :<Navigate to={"/auth/register"}/>}
-    </Suspense>,
-    children:[
-      {
-        path:"/profile/user",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <Profile/>
-        </Suspense>
-      },{
-        path:"/profile/userprofile",
-        element:<Suspense fallback={<h1>Loading...</h1>}>
-          <YourProfile/>
-        </Suspense>
+        path: "/search/filter",
+        element: (
+          <Suspense fallback={loading()}>
+            <Filter />
+          </Suspense>
+        ),
       },
-    ]
+    ],
   },
   {
-    path:"/privacypolicy/:rout",
-    element:<PrivacyPoliy/>
-  }
+    path: "/mentor-details",
+    element: (
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <MentorDetailsLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/mentor-details/:rout",
+        element: (
+          <Suspense fallback={loading()}>
+            <MentorDetails />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/chat",
+    element: (
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <ChatLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/chat",
+        element: (
+          <Suspense fallback={loading()}>
+            <Chatting />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/chat/pv/:handleBack",
+        element: (
+          <Suspense fallback={loading()}>
+            <DoingChat />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/profile",
+    element: (
+      <Suspense fallback={loading()}>
+        {cookies.get("token") ? (
+          <ProfileLayout />
+        ) : (
+          <Navigate to={"/auth/register"} />
+        )}
+      </Suspense>
+    ),
+    children: [
+      {
+        path: "/profile/user",
+        element: (
+          <Suspense fallback={loading()}>
+            <Profile />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/profile/userprofile",
+        element: (
+          <Suspense fallback={loading()}>
+            <YourProfile />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/privacypolicy/:rout",
+    element: <PrivacyPoliy />,
+  },
 ]);
 const App = () => {
   return (

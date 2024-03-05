@@ -5,18 +5,18 @@ import $ from "jquery";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const handleLogout=()=>{
-    const logoutDiv=document.getElementById("logoutDiv")
-    if(logoutDiv){
-      $(logoutDiv).fadeIn("slow")
+  const handleLogout = () => {
+    const logoutDiv = document.getElementById("logoutDiv");
+    if (logoutDiv) {
+      $(logoutDiv).fadeIn("slow");
     }
-  }
-  const handleCancelLogout=()=>{
-    const logoutDiv=document.getElementById("logoutDiv")
-    if(logoutDiv){
-      $(logoutDiv).fadeOut("slow")
+  };
+  const handleCancelLogout = () => {
+    const logoutDiv = document.getElementById("logoutDiv");
+    if (logoutDiv) {
+      $(logoutDiv).fadeOut("slow");
     }
-  }
+  };
   return (
     <>
       <Navigation backAddress="/" subjectName="Profile" />
@@ -58,7 +58,6 @@ const Profile = () => {
             onClick={() => navigate("/privacypolicy/profile")}
           />
           <HandleItems
-          
             itemIcon="/icons/logout.png"
             itemName="Log out"
             onClick={handleLogout}
@@ -66,14 +65,22 @@ const Profile = () => {
         </div>
       </div>
       <FooterNavigation classNameProfile="!border-blue-700" />
-      <div id="logoutDiv" className="hidden"><div  className="fixed p-3 bottom-0 left-0 right-0 flex flex-col gap-2 text-center bg-white text-black rounded-t-3xl border-t border-blue-700 z-30">
-<h4 className="font-medium text-lg">Logout</h4>
-<span className="text-slate-500">Are you sure you want to log out?</span>
-<div className="flex items-center gap-1">
-  <Button onClick={handleCancelLogout} variant="outline" children="Cancel"/>
-  <Button children="Yes,Logout" variant="contained"/>
-</div>
-      </div></div>
+      <div id="logoutDiv" className="hidden z-30 bg-white fixed p-3 bottom-0 left-0 right-0 text-black rounded-t-3xl border-t border-blue-700">
+        <div className=" flex flex-col gap-2 text-center ">
+          <h4 className="font-medium text-lg">Logout</h4>
+          <span className="text-slate-500">
+            Are you sure you want to log out?
+          </span>
+          <div className="flex items-center gap-1">
+            <Button
+              onClick={handleCancelLogout}
+              variant="outline"
+              children="Cancel"
+            />
+            <Button children="Yes,Logout" variant="contained" />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

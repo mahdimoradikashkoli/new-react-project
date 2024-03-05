@@ -2,7 +2,7 @@ import { Search, UserReviews } from "../../../components";
 
 export const Reviews = () => {
   return (
-    <div>
+    <>
       <div className="flex items-center mt-3">
         <h1 className="font-medium text-xl">Review</h1>
         <p className="pt-1 font-medium text-xl text-blue-700">(45)</p>
@@ -20,8 +20,7 @@ export const Reviews = () => {
         />
       </div>
       <div
-        className="mt-4 flex flex-col gap-3 overflow-y-auto"
-        style={{ height: "408px" }}
+        className="mt-4 flex flex-col gap-3"
       >
         <UserReviews
           userImage="/imagehome/girl.png"
@@ -39,6 +38,6 @@ export const Reviews = () => {
           comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, dolore."
         />
       </div>
-    </div>
+    </>
   );
 };

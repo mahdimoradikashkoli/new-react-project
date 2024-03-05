@@ -41,13 +41,13 @@ export const Navigation: React.FC<navigationType> = ({
           <div className="flex items-center gap-1 ml-14">
            {bookMarkImage && <img
            onClick={onClickBookMark}
-                className="rounded-full w-10 h-10 bg-slate-400"
+                className="rounded-full w-10 h-10 py-1 bg-white cursor-pointer"
                 src={bookMarkImage}
                 alt="bookmark"
               />}
 
             {shareImage && <img onClick={onClickShare}
-                className="rounded-full w-10 h-10"
+                className="rounded-full w-10 h-10 cursor-pointer"
                 src={shareImage}
                 alt="share"
               />}

@@ -15,8 +15,7 @@ export const CourseLessons: React.FC<courseLessonsType> = ({
       </div>
 
       <div
-        className="flex flex-col  gap-2  overflow-y-auto pb-12"
-        style={{ height: "574px" }}
+        className="flex flex-col gap-2"
       >
         {componentLesson}
       </div>
