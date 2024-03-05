@@ -6,8 +6,8 @@ import {
   import $ from "jquery";
 
 export const ShareReceipt=()=>{
-    const shareUrl =document.querySelector("#receipt")
-   const shareUrlInnerHtml=shareUrl?.innerHTML
+
+    const shareUrl ="http://localhost:5173/payment/electronicreceipt"
     const closeShareNavbar = () => {
         const shareNavbar = document.querySelector("#sharenavbar");
         if (shareNavbar) {
@@ -29,21 +29,21 @@ export const ShareReceipt=()=>{
               </button>
             </div>
             <div className=" flex justify-center  gap-10">
-              <FacebookShareButton url={shareUrlInnerHtml!}>
+              <FacebookShareButton url={shareUrl!}>
                 <img
                   src="/icons/facebook.png"
                   alt="facebook"
                   className="bg-white w-10 h-10 rounded-full"
                 />
               </FacebookShareButton>
-              <TwitterShareButton url={shareUrlInnerHtml!}>
+              <TwitterShareButton url={shareUrl!}>
                 <img
                   src="/icons/tiwter.png"
                   alt="twitter"
                   className="bg-white w-10 h-10 rounded-full"
                 />
               </TwitterShareButton>
-              <TelegramShareButton url={shareUrlInnerHtml!}>
+              <TelegramShareButton url={shareUrl!}>
                 <img
                   src="/icons/telgram.png"
                   alt="telegram"

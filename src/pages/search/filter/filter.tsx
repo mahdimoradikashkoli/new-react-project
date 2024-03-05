@@ -194,7 +194,7 @@ const Filter = () => {
           </li>
         </ul>
       </div>
-      <div className="bg-white border-2 border-blue-800 p-3 fixed bottom-0 right-0 left-0 flex gap-3 items-center rounded-t-3xl ">
+      <div className="bg-white border border-slate-300 p-3 fixed bottom-0 right-0 left-0 flex gap-3 items-center rounded-t-3xl ">
         <Button className="text-black" variant="outline" children="Reset filter"/>
         <Button variant="contained" children="Apply"/>
       </div>

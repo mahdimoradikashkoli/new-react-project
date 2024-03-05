@@ -18,7 +18,7 @@ export const UserReviews: React.FC<userReviewsType> = ({
         </div>
         <p className="font-medium text-slate-500">{commentTime}</p>
       </div>
-      <p className="font-medium text-slate-700">{comment}</p>
+      <p className="text-sm text-slate-700">{comment}</p>
       <div className="flex items-center gap-1">
         <img className="w-7 h-7" src="/imagehome/star.png" alt="star" />
         <img className="w-7 h-7" src="/imagehome/star.png" alt="star" />

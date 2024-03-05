@@ -108,7 +108,7 @@ const Register: React.FC = () => {
           <div className="flex gap-0.5 ">
             <input type="checkbox" id="checkboxform" />
             <p>Agree with</p>
-            <span onClick={()=>navigate("/privacypolicy/register")} className="text-blue-600">Terms & condition</span>
+            <span onClick={()=>navigate("/privacypolicy/register")} className="text-blue-600 cursor-pointer">Terms & condition</span>
           </div>
           <Button
             className="mt-1 mb-10"

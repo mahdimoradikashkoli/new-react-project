@@ -1,7 +1,7 @@
 import { MouseEventHandler } from "react";
 
 export type navigationType = {
-  backAddress: string;
+  backAddress:string;
   subjectName?: string;
   shareImage?: string;
   bookMarkImage?: string;

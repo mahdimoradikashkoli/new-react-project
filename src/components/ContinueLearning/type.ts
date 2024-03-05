@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 export type ContinueLearningType = {
   courseImage: string;
   courseTitle: string;
@@ -7,4 +9,5 @@ export type ContinueLearningType = {
   NumberOfLessonsRead: number;
   NumberOfLessons: number;
   className?:string
+  onClickCourseImage?:MouseEventHandler<HTMLImageElement>
 };

@@ -22,11 +22,11 @@ const ReviewMentor = () => {
           backgroundImage: `url(http://localhost:4003${courseInfo?.courseImageAddress})`,
         }}
       >
-        <Navigation backAddress="" />
+        <Navigation backAddress="/coursedetailes/rm" />
       </StyleDivImage>
       <div
         style={{ height: "37.5rem" }}
-        className="bg-white  rounded-t-3xl relative -top-10 w-full"
+        className="bg-white  rounded-t-3xl relative -top-10 w-full  "
       >
         <img
           className="absolute right-0 left-0 -top-12 m-auto w-24 h-24 bg-blue-300 rounded-full border-2 border-white"
@@ -77,7 +77,7 @@ const ReviewMentor = () => {
           <hr className="border-t-2 border-slate-300 mt-5" />
           <div className="mt-4  w-full flex justify-center">
             <form className=" w-full md:w-8/12" action="">
-              <div className="flex flex-col  w-full">
+              <div className="flex flex-col  w-full h-52">
                 <label className="font-medium" htmlFor="">
                   Add detailed review
                 </label>

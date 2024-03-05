@@ -12,12 +12,12 @@ export const MentorInfo: React.FC<mentorInfoType> = ({
   return (
     <div
       key={unikId}
-      className={`flex justify-between items-center w-full sm:w-96 p-2 bg-white text-black rounded-lg shadow-md ${className}`}
+      className={`flex justify-between items-center w-full sm:w-96 px-4 py-1 bg-white text-black rounded-lg shadow-md ${className}`}
     >
       <div  className="flex items-center gap-2">
         <img
         onClick={onClick}
-          className="rounded-full w-12 h-12"
+          className="rounded-full w-12 h-12 cursor-pointer"
           src={mentorImgAddress}
           alt="teacher"
         />
@@ -35,7 +35,7 @@ export const MentorInfo: React.FC<mentorInfoType> = ({
         />
         <img
           onClick={onclickChatIcon}
-          className="rounded-full w-9 h-9"
+          className="rounded-full w-9 h-9 cursor-pointer"
           src="/icons/message.png"
           alt="message image"
         />

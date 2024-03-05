@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { courseDetailesType } from "./type";
 import { MentorInfo } from "../../../../components";
+import { useNavigate } from "react-router-dom";
 
 export const About: React.FC<courseDetailesType> = ({
   aboutCourse,
@@ -13,12 +14,15 @@ export const About: React.FC<courseDetailesType> = ({
   numberOfStudent,
   subtitle,
   customKey,
-  subjectCourse,onClickMentorImage
+  subjectCourse,
+  onClickMentorImage,
 }) => {
+
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   const textAboutCourse: string = aboutCourse;
 
+  const navigate=useNavigate()
   return (
     <div key={customKey}>
       <div className="mt-3">
@@ -29,11 +33,21 @@ export const About: React.FC<courseDetailesType> = ({
               ? textAboutCourse
               : textAboutCourse?.slice(0, 50) + "..."}
             {!isExpanded ? (
-              <button onClick={()=>{setIsExpanded(true);}} className="text-blue-600">
-                 Read More
+              <button
+                onClick={() => {
+                  setIsExpanded(true);
+                }}
+                className="text-blue-600"
+              >
+                Read More
               </button>
             ) : (
-              <button onClick={()=>{setIsExpanded(false);}} className="text-blue-600">
+              <button
+                onClick={() => {
+                  setIsExpanded(false);
+                }}
+                className="text-blue-600"
+              >
                 Read Less
               </button>
             )}
@@ -41,10 +55,14 @@ export const About: React.FC<courseDetailesType> = ({
         </div>
       </div>
       <h1 className="text-xl text-black font-medium mt-3">Tutor</h1>
-      <MentorInfo className="mt-2" mentorImgAddress={mentorImageAddress}
-      mentorName={mentorName}
-      subjectCourse={subjectCourse}
-      onClick={onClickMentorImage}/>
+      <MentorInfo
+      onclickChatIcon={()=>navigate("/chat/pv/coursedetailes")}
+        className="mt-2 "
+        mentorImgAddress={mentorImageAddress}
+        mentorName={mentorName}
+        subjectCourse={subjectCourse}
+        onClick={onClickMentorImage}
+      />
       <h1 className="text-xl text-black font-medium mt-3">Info</h1>
       <div className="grid grid-cols-2 gap-y-2 mt-3">
         <div>

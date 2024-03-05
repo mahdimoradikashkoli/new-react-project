@@ -14,6 +14,7 @@ const AllTopMentor = () => {
     getAllTopMentor();
   }, []);
   const navigate=useNavigate()
+  const handleOnClickChat=()=> navigate("/chat/pv/see-all-mentor")
   return (
     <>
       <Navigation backAddress="/" subjectName="Top Mentors" />
@@ -22,6 +23,7 @@ const AllTopMentor = () => {
           {AlltopMentors?.length > 0 &&
             AlltopMentors.map((mentor: mentortyp) => {
               return MentorInfo({
+                onclickChatIcon:handleOnClickChat,
                 onClick:()=>navigate("/mentor-details/see-all"),
                 unikId:mentor?._id,
                 mentorImgAddress: `http://localhost:4003${mentor?.topMentorImage}`,

@@ -7,7 +7,7 @@ const PeymentMethods = () => {
   return (
     <>
       <Navigation
-        backAddress="/coursedetailes"
+        backAddress="/coursedetailes/course"
         subjectName="Peyment Methods"
       />
       <div className="px-3 pb-3 pt-16">

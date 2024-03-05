@@ -1,9 +1,10 @@
 import { CategoriesType } from "./type";
-export const Categories: React.FC<CategoriesType> = ({ img, subject, key }) => {
+export const Categories: React.FC<CategoriesType> = ({ img, subject, key ,onClick}) => {
   return (
-    <div key={key} className="flex flex-col flex-shrink-0 items-center gap-1">
+    <div key={key}  className="flex flex-col flex-shrink-0 items-center gap-1">
       <img
-        className="rounded-full w-16 h-16 bg-white"
+      onClick={onClick}
+        className="rounded-full w-16 h-16 bg-white cursor-pointer"
         src={img}
         alt="Art image"
       />

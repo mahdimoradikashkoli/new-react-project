@@ -7,5 +7,6 @@ export type CourseComponentType={
     mentorName:string,
     courseprice:string,
     onClick?:MouseEventHandler<HTMLButtonElement>,
-    bookMarkIcon?:string
+    bookMarkIcon?:string,
+    onClickCourseImage?:MouseEventHandler<HTMLImageElement>
 }

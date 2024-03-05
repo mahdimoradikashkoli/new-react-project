@@ -12,7 +12,7 @@ const ReviewSummery = () => {
       const data = await instance.get(`/coursedetailes/${courseId}`);
       setCoursInfo(data.data.courseDetailes);
     };
-    fetchData();
+    courseId && fetchData();
   }, []);
   const { payment } = useParams();
   return (
@@ -22,10 +22,10 @@ const ReviewSummery = () => {
         subjectName="Review Summery"
       />
       <div className="px-3 pt-16 pb-20 ">
-        <div className="flex  p-2 gap-2  rounded-lg w-fit h-40 mb-20">
+        <div className="flex  p-2 gap-2  rounded-lg border w-fit h-fit mb-20">
           <img
             className="w-1/2 object-cover rounded-md"
-            src={`http://localhost:4003/${courseInfo?.courseImageAddress}`}
+            src={courseInfo?.courseImageAddress?`http://localhost:4003/${courseInfo?.courseImageAddress}`:"/imagehome/teacher.png"}
             alt="image"
           />
           <div className="flex flex-col gap-1">
@@ -37,17 +37,17 @@ const ReviewSummery = () => {
               />
               <p className="text-lg font-medium pt-0.5">4.7</p>
             </div>
-            <h1 className="font-medium">{courseInfo?.corseSubject}</h1>
+            <h1 className="font-medium">{courseInfo?.corseSubject?? "Introduction of figma"}</h1>
             <div className="flex items-center gap-3">
               <img
                 className="w-8 h-8 rounded-full"
-                src={`http://localhost:4003${courseInfo?.mentorImageAddress}`}
+                src={courseInfo?.mentorImageAddress?`http://localhost:4003${courseInfo?.mentorImageAddress}`:"/imagehome/girl.png"}
                 alt="profilr png"
               />
-              <p>{courseInfo?.mentorName}</p>
+              <p className="text-sm">{courseInfo?.mentorName?? "Crise Hamsorce"}</p>
             </div>
             <div className="flex items-center gap-3">
-              <p className="text-blue-600">{courseInfo?.courseprice}</p>
+              <p className="text-blue-600">{courseInfo?.courseprice ?? "$2000.00"}</p>
               <button className="p-1 bg-slate-400 text-yellow-300 text-xs rounded-lg">
                 Best selers
               </button>
@@ -58,24 +58,24 @@ const ReviewSummery = () => {
           <div className="flex flex-col gap-2 mb-2">
             <div className="flex items-center justify-between w-80">
               <h1 className="text-slate-500 text-lg font-medium">Language</h1>
-              <p className="font-medium text-lg">{courseInfo?.language}</p>
+              <p className="font-medium text-lg">{courseInfo?.language?? "english"}</p>
             </div>
             <div className="flex items-center justify-between w-80">
               <h1 className="text-slate-500 text-lg font-medium">Lessons</h1>
               <p className="font-medium text-lg">
-                {courseInfo?.numberOfLessons}
+                {courseInfo?.numberOfLessons?? "9"}
               </p>
             </div>
             <div className="flex items-center justify-between w-80">
               <h1 className="text-slate-500 text-lg font-medium">Level</h1>
-              <p className="font-medium text-lg">{courseInfo?.level}</p>
+              <p className="font-medium text-lg">{courseInfo?.level??"beginner"}</p>
             </div>
           </div>
           <hr className="border-t-2 w-80" />
           <div className="flex flex-col gap-3 mt-2 mb-2">
             <div className="flex items-center justify-between w-80">
               <h1 className="text-slate-500 text-lg font-medium">Amount</h1>
-              <p className="font-medium text-lg">{courseInfo?.courseprice}</p>
+              <p className="font-medium text-lg">{courseInfo?.courseprice??"$2000.00"}</p>
             </div>
             <div className="flex items-center justify-between w-80">
               <h1 className="text-slate-500 text-lg font-medium">Tax</h1>
@@ -85,7 +85,7 @@ const ReviewSummery = () => {
           <hr className="border-t-2 w-80" />
           <div className="flex items-center justify-between w-80 mt-2 mb-2">
             <h1 className="text-slate-500 text-lg font-medium">Total</h1>
-            <p className="font-medium text-lg">{courseInfo?.courseprice}</p>
+            <p className="font-medium text-lg">{courseInfo?.courseprice??"$2000.00"}</p>
           </div>
           <div className="w-80 bg-white p-2 rounded-lg flex items-center justify-between">
             <div className="flex items-center gap-3">

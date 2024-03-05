@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom"
 import { ContinueLearning } from "../../../components"
 
 export const OnGoing=()=>{
+const navigate=useNavigate()
+
+  const handleGoToCourse=()=>{
+navigate("/coursedetailes/mycourse")
+  }
+
     return (
         <div className="p-2 w-full h-screen flex flex-col overflow-y-auto gap-2 mt-4 pb-60 sm:flex-row sm:!flex-wrap">
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -13,6 +21,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={34}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -22,6 +31,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={34}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -31,6 +41,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={20}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -40,6 +51,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={3}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -49,6 +61,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={34}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -58,6 +71,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={17}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -67,6 +81,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={34}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -76,6 +91,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={12}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -85,6 +101,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={30}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"
@@ -94,6 +111,7 @@ export const OnGoing=()=>{
             NumberOfLessonsRead={16}
           />
           <ContinueLearning
+          onClickCourseImage={handleGoToCourse}
             courseImage="/imagehome/teacher.png"
             courseTitle="Introduction of figma"
             mentorImage="/imagehome/girl.png"

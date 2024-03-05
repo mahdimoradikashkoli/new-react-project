@@ -107,7 +107,7 @@ export const Lessons: React.FC<LessonsType> = ({
           {LessonNumber}
         </div>
         <div>
-          <h1 className="font-medium">{subjectLesson}</h1>
+          <h1 className="sm:font-medium text-xs sm:text-sm text-center">{subjectLesson}</h1>
           <p className="text-slate-600">{formatTime(duration)}</p>
         </div>
         {isPlaying ? (

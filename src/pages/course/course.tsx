@@ -65,7 +65,7 @@ const Course: React.FC = () => {
     <>
       <Navigation
         onClick={stopCurentSong}
-        backAddress="/coursedetailes"
+        backAddress={params === "cd" ?"/review/reviewcourse":"/coursedetailes/course"}
         subjectName="course"
       />
       {showTitle === "Certificate" && (
@@ -132,65 +132,83 @@ const Course: React.FC = () => {
           {showTitle === "Lessons" && (
             <>
               <LessonsInformation
-                section="section 01"
-                subject="Play socure"
-                timeLesson="10"
-              />
-              <Lessons
-                LessonNumber="01"
-                src={`http://localhost:4003/${courseInfo!.lessonOneAddress}`}
-                subjectLesson={courseInfo!.subjectOne}
-              />
-              <Lessons
-                LessonNumber="02"
-                src={`http://localhost:4003/${courseInfo!.lessonToweAddress}`}
-                subjectLesson={courseInfo!.subjectTowe}
-              />
-              <LessonsInformation
-                section="section 02"
-                subject="Learning Fotball"
-                timeLesson="20"
-              />
-              <Lessons
-                LessonNumber="03"
-                src={`http://localhost:4003/${courseInfo!.lessonThreeAddress}`}
-                subjectLesson={courseInfo!.subjectThree}
-              />
-              <Lessons
-                LessonNumber="04"
-                src={`http://localhost:4003/${courseInfo!.lessonForAddress}`}
-                subjectLesson={courseInfo!.subjectFor}
-              />
-              <Lessons
-                LessonNumber="05"
-                src={`http://localhost:4003/${courseInfo!.lessonFiveAddress}`}
-                subjectLesson={courseInfo!.subjectFive}
-              />
-              <Lessons
-                LessonNumber="06"
-                src={`http://localhost:4003/${courseInfo!.lessonSixAddress}`}
-                subjectLesson={courseInfo!.subjectSix}
-              />
-              <LessonsInformation
-                section="section 03"
-                subject="Final Review"
-                timeLesson="40"
-              />
-              <Lessons
-                LessonNumber="07"
-                src={`http://localhost:4003/${courseInfo!.lessonSevenAddress}`}
-                subjectLesson={courseInfo!.subjectSeven}
-              />
-              <Lessons
-                LessonNumber="08"
-                src={`http://localhost:4003/${courseInfo!.lessonEightAddress}`}
-                subjectLesson={courseInfo!.subjectEight}
-              />
-              <Lessons
-                LessonNumber="09"
-                src={`http://localhost:4003/${courseInfo!.lessonNineAddress}`}
-                subjectLesson={courseInfo!.subjectNine}
-              />
+                      section="section 01"
+                      subject="Play socure"
+                      timeLesson="10"
+                    />
+                    <Lessons
+                      LessonNumber="01"
+                      src={courseInfo!.lessonOneAddress?`http://localhost:4003/${
+                        courseInfo!.lessonOneAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectOne}
+                    />
+                    <Lessons
+                      LessonNumber="02"
+                      src={courseInfo!.lessonToweAddress?`http://localhost:4003/${
+                        courseInfo!.lessonToweAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectTowe}
+                    />
+                    <LessonsInformation
+                      section="section 02"
+                      subject="Learning Fotball"
+                      timeLesson="20"
+                    />
+                    <Lessons
+                      LessonNumber="03"
+                      src={courseInfo!.lessonThreeAddress?`http://localhost:4003/${
+                        courseInfo!.lessonThreeAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectThree}
+                    />
+                    <Lessons
+                      LessonNumber="04"
+                      src={courseInfo!.lessonForAddress?`http://localhost:4003/${
+                        courseInfo!.lessonForAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectFor}
+                    />
+                    <Lessons
+                      LessonNumber="05"
+                      src={courseInfo!.lessonFiveAddress?`http://localhost:4003/${
+                        courseInfo!.lessonFiveAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectFive}
+                    />
+                    <Lessons
+                      LessonNumber="06"
+                      src={courseInfo!.lessonSixAddress?`http://localhost:4003/${
+                        courseInfo!.lessonSixAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectSix}
+                    />
+                    <LessonsInformation
+                      section="section 03"
+                      subject="Final Review"
+                      timeLesson="40"
+                    />
+                    <Lessons
+                      LessonNumber="07"
+                      src={courseInfo!.lessonSevenAddress?`http://localhost:4003/${
+                        courseInfo!.lessonSevenAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectSeven}
+                    />
+                    <Lessons
+                      LessonNumber="08"
+                      src={courseInfo!.lessonEightAddress?`http://localhost:4003/${
+                        courseInfo!.lessonEightAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectEight}
+                    />
+                    <Lessons
+                      LessonNumber="09"
+                      src={courseInfo!.lessonNineAddress?`http://localhost:4003/${
+                        courseInfo!.lessonNineAddress
+                      }`:"/music/Behnam Bani - Khastam (128).mp3"}
+                      subjectLesson={courseInfo!.subjectNine}
+                    />
             </>
           )}
         </div>
@@ -200,7 +218,7 @@ const Course: React.FC = () => {
           onClick={
             showTitle === "Lessons"
               ? () => {
-                  navigate("/coursedetailes"), stopCurentSong();
+                  navigate("/coursedetailes/course"), stopCurentSong();
                 }
               : handleDownloadCertificate
           }

@@ -20,7 +20,7 @@ const PaymentResult = () => {
       <div className="flex flex-col items-center">
         <div className="border-t-2 fixed bottom-0 w-full flex flex-col  bg-white rounded-t-2xl py-2 px-3  items-center justify-between">
           <Button onClick={()=>navigate("/payment/electronicreceipt")} children="View E-Receipt" variant="contained" />
-          <Button className="text-black" onClick={()=>navigate("/coursedetailes")} children="Go to course" />
+          <Button className="text-black" onClick={()=>navigate("/coursedetailes/course")} children="Go to course" />
         </div>
       </div>
     </>

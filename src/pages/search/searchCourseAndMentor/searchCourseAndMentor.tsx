@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { CourseComponent, MentorInfo, SearchNavbar } from "../../../components";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SearchcourseAndMentor = () => {
   const [showTitle, setShowTitle] = useState("courses");
+  const { routCategory } = useParams();
+  const navigate = useNavigate();
   return (
     <>
-      <SearchNavbar backaddress="" />
+      <SearchNavbar
+        backaddress={
+          routCategory === "allcategory" ? "/layoutseeall/allcategorie" : "/"
+        }
+      />
       <div className="fixed p-3 top-20 left-0 right-0 flex flex-col h-screen overflow-y-auto">
         <div className="flex items-center justify-evenly">
           <div className="flex flex-col items-center gap-1">
@@ -55,6 +62,9 @@ const SearchcourseAndMentor = () => {
         {showTitle === "courses" && (
           <div className="flex mt-4 flex-col gap-2 pb-20 sm:flex-row sm:flex-wrap overflow-y-auto ">
             <CourseComponent
+              onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -63,6 +73,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -71,6 +84,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -79,6 +95,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -87,6 +106,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -95,6 +117,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -103,6 +128,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -111,6 +139,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -119,6 +150,9 @@ const SearchcourseAndMentor = () => {
               bookMarkIcon="/icons/bookmark.png"
             />
             <CourseComponent
+            onClickCourseImage={() => {
+                navigate("/coursedetailes/search-course");
+              }}
               corseSubject="introduction of figma"
               courseImageAddress="/imagehome/teacher.png"
               courseprice="$12000.00"
@@ -128,36 +162,73 @@ const SearchcourseAndMentor = () => {
             />
           </div>
         )}
-        { showTitle === "mentors" && <div className="flex mt-4 px-3 flex-col gap-2 pb-20 sm:flex-row sm:flex-wrap overflow-y-auto ">
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          <MentorInfo mentorImgAddress="/imagehome/girl.png"
-          mentorName="Ronaldo"
-          subjectCourse="Learning football"/>
-          
-        </div>}
+        {showTitle === "mentors" && (
+          <div className="flex mt-4 px-3 flex-col gap-2 pb-20 sm:flex-row sm:flex-wrap overflow-y-auto ">
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+            <MentorInfo
+            onClick={()=>navigate("/mentor-details/search-mentor")}
+            onclickChatIcon={()=>navigate("/chat/pv/search-mentor")}
+              mentorImgAddress="/imagehome/girl.png"
+              mentorName="Ronaldo"
+              subjectCourse="Learning football"
+            />
+          </div>
+        )}
       </div>
     </>
   );

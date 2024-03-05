@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const StyleDivImage=styled.div`
-position:relative;
-background-size: contain;
-width: 100%;
-height: 200px;
-background-repeat: no-repeat;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(0, 0, 0, 0.5);
+  background-size: contain;
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
 `

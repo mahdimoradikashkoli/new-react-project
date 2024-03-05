@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { Navigation } from "../../components";
 import {
   MessageNotification,
@@ -5,10 +6,12 @@ import {
 } from "../../microComponents";
 
 const Notification = () => {
+
+  const {handleNotificationBack}=useParams()
   return (
     <>
       <div>
-        <Navigation backAddress="/" subjectName="Notifucation" />
+        <Navigation backAddress={handleNotificationBack === "setting"? "/setting":"/"} subjectName="Notifucation" />
         <div className="bg-blue-700 py-1 px-2 w-fit rounded-2xl fixed top-4 right-3 ">
           2 New
         </div>

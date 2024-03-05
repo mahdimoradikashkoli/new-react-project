@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CourseComponent, Button, FooterNavigation, Navigation } from "../../components";
 import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 
 const BookMark = () => {
   const [filter, setFilter] = useState("All");
@@ -16,6 +17,7 @@ const BookMark = () => {
         $(hiddenDiv)?.fadeOut("slow")
     }
   }
+  const navigate=useNavigate()
   return (
     <>
       <div className="p-3">
@@ -78,6 +80,7 @@ const BookMark = () => {
 
         <div className="p-3 fixed top-28 left-0 pb-56 right-0 flex flex-col gap-2 sm:gap-4 h-screen overflow-y-auto w-full mt-4 sm:flex-row sm:!flex-wrap ">
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -86,6 +89,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -94,6 +98,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -102,6 +107,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -110,6 +116,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -118,6 +125,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"
@@ -126,6 +134,7 @@ const BookMark = () => {
             onClick={handleShowHiddenDiv}
           />
           <CourseComponent
+          onClickCourseImage={()=>navigate("/coursedetailes/frombookmark")}
             corseSubject="Design figma"
             courseImageAddress="/imagehome/teacher.png"
             mentorImageAddress="/imagehome/girl.png"

@@ -4,23 +4,33 @@ import { Reveiw } from "./partials/reveiw/reveiw";
 import { AboutMentorDetails } from "./partials/about";
 
 import $ from "jquery";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ShareButton } from "./partials/shareButton";
-const MentorDetails = () => {
+
+const MentorDetails: React.FC = () => {
   const [handleTitle, setHandleTitle] = useState("about");
-  
-  const showShareNavbar=()=>{
-    const hiddenDiv=document.querySelector("#sharenavbar")
-    if(hiddenDiv){
-      $(hiddenDiv)?.fadeIn("slow")
+
+  const showShareNavbar = () => {
+    const hiddenDiv = document.querySelector("#sharenavbar");
+    if (hiddenDiv) {
+      $(hiddenDiv)?.fadeIn("slow");
     }
-  }
-const {rout}=useParams()
-console.log(rout)
+  };
+  const { rout } = useParams();
+
+  const navigate = useNavigate();
   return (
     <>
       <Navigation
-        backAddress={`${rout === "back-home" ? "/" :rout === "course-detailes"? "/coursedetailes": "/layoutseeall/alltopmentor"}`}
+        backAddress={`${
+          rout === "back-home"
+            ? "/"
+            : rout === "course-detailes"
+            ? "/coursedetailes/-"
+            : rout === "search-mentor"
+            ? "/search/mentor-and-course/-"
+            : "/layoutseeall/alltopmentor"
+        }`}
         subjectName="Mentor Details"
         shareImage="/icons/sharepng.png"
         className="justify-between"
@@ -55,8 +65,8 @@ console.log(rout)
               alt="call image"
             />
             <img
-              //   onClick={onclickChatIcon}
-              className="rounded-full w-9 h-9"
+              onClick={() => navigate("/chat/pv/mentor-detailes")}
+              className="rounded-full w-9 h-9 cursor-pointer"
               src="/icons/message.png"
               alt="message image"
             />
@@ -118,53 +128,68 @@ console.log(rout)
         </div>
         <hr />
         <div className="h-screen w-full overflow-y-auto">
-          { Boolean(handleTitle) && handleTitle === "about" && <AboutMentorDetails Cources={32}
-          descriptionforMentor="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi ex dignissimos quaerat. Non quae hic dolor eum, suscipit perferendis necessitatibus mollitia sint nisi, esse iusto ratione similique veniam voluptate fuga."
-          numberOfStudent={12345}
-          />}
+          {Boolean(handleTitle) && handleTitle === "about" && (
+            <AboutMentorDetails
+              Cources={32}
+              descriptionforMentor="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi ex dignissimos quaerat. Non quae hic dolor eum, suscipit perferendis necessitatibus mollitia sint nisi, esse iusto ratione similique veniam voluptate fuga."
+              numberOfStudent={12345}
+            />
+          )}
 
-          { Boolean(handleTitle) && handleTitle === "cources" && (<><h3 className="text-lg mt-3">
-            Cources<span className="text-blue-700">(32)</span>
-          </h3>
-          <div className="flex flex-col gap-1 mt-2 h-fit sm:flex-row sm:flex-wrap sm:gap-4">
-            
-              <CourseComponent
-              corseSubject="Introduction figma"
-              courseImageAddress="/imagehome/teacher.png"
-              courseprice="$13000"
-              mentorImageAddress="/imagehome/girl.png"
-              mentorName="Johon Doe"/>
-              <CourseComponent
-              corseSubject="Introduction figma"
-              courseImageAddress="/imagehome/teacher.png"
-              courseprice="$13000"
-              mentorImageAddress="/imagehome/girl.png"
-              mentorName="Johon Doe"/>
-              <CourseComponent
-              corseSubject="Introduction figma"
-              courseImageAddress="/imagehome/teacher.png"
-              courseprice="$13000"
-              mentorImageAddress="/imagehome/girl.png"
-              mentorName="Johon Doe"/>
-              <CourseComponent
-              corseSubject="Introduction figma"
-              courseImageAddress="/imagehome/teacher.png"
-              courseprice="$13000"
-              mentorImageAddress="/imagehome/girl.png"
-              mentorName="Johon Doe"/>
-              <CourseComponent
-              corseSubject="Introduction figma"
-              courseImageAddress="/imagehome/teacher.png"
-              courseprice="$13000"
-              mentorImageAddress="/imagehome/girl.png"
-              mentorName="Johon Doe"/>
-            
-          </div></>)}
+          {Boolean(handleTitle) && handleTitle === "cources" && (
+            <>
+              <h3 className="text-lg mt-3">
+                Cources<span className="text-blue-700">(32)</span>
+              </h3>
+              <div className="flex flex-col gap-1 mt-2 h-fit sm:flex-row sm:flex-wrap sm:gap-4">
+                <CourseComponent
+                  onClickCourseImage={() => navigate("/coursedetailes/md")}
+                  corseSubject="Introduction figma"
+                  courseImageAddress="/imagehome/teacher.png"
+                  courseprice="$13000"
+                  mentorImageAddress="/imagehome/girl.png"
+                  mentorName="Johon Doe"
+                />
+                <CourseComponent
+                  onClickCourseImage={() => navigate("/coursedetailes/md")}
+                  corseSubject="Introduction figma"
+                  courseImageAddress="/imagehome/teacher.png"
+                  courseprice="$13000"
+                  mentorImageAddress="/imagehome/girl.png"
+                  mentorName="Johon Doe"
+                />
+                <CourseComponent
+                  onClickCourseImage={() => navigate("/coursedetailes/md")}
+                  corseSubject="Introduction figma"
+                  courseImageAddress="/imagehome/teacher.png"
+                  courseprice="$13000"
+                  mentorImageAddress="/imagehome/girl.png"
+                  mentorName="Johon Doe"
+                />
+                <CourseComponent
+                  onClickCourseImage={() => navigate("/coursedetailes/md")}
+                  corseSubject="Introduction figma"
+                  courseImageAddress="/imagehome/teacher.png"
+                  courseprice="$13000"
+                  mentorImageAddress="/imagehome/girl.png"
+                  mentorName="Johon Doe"
+                />
+                <CourseComponent
+                  onClickCourseImage={() => navigate("/coursedetailes/md")}
+                  corseSubject="Introduction figma"
+                  courseImageAddress="/imagehome/teacher.png"
+                  courseprice="$13000"
+                  mentorImageAddress="/imagehome/girl.png"
+                  mentorName="Johon Doe"
+                />
+              </div>
+            </>
+          )}
 
-          {Boolean(handleTitle) && handleTitle === "reveiw" && <Reveiw/>}
+          {Boolean(handleTitle) && handleTitle === "reveiw" && <Reveiw />}
         </div>
       </div>
-      <ShareButton/>
+      <ShareButton />
     </>
   );
 };

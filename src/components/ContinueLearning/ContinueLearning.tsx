@@ -8,11 +8,13 @@ export const ContinueLearning: React.FC<ContinueLearningType> = ({
   NumberOfLessonsRead,
   NumberOfLessons,
   className,
+  onClickCourseImage
 }) => {
   return (
     <div className={`flex border p-3 gap-2 border-slate-400 rounded-lg w-full h-fit  sm:w-96 ${className}`} >
       <img
-        className="w-1/2 object-cover rounded-md"
+      onClick={onClickCourseImage}
+        className="w-1/2 object-cover rounded-md cursor-pointer"
         src={courseImage}
         alt="image"
       />
